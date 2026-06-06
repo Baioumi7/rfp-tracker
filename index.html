@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Giza Arabia</title>
+<title>Pulse by Solutions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -92,13 +92,17 @@
 
   /* TABLE */
   .table-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .table-scroll { overflow-x: auto; overflow-y: auto; max-height: calc(100vh - 220px); }
   .table-scroll { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; min-width: 1200px; }
   thead th {
+    position: sticky; top: 0; z-index: 10;
     padding: 10px 13px; text-align: left; font-size: 11px; font-weight: 600;
     color: var(--text3); text-transform: uppercase; letter-spacing: 0.6px;
     background: var(--bg3); border-bottom: 1px solid var(--border); white-space: nowrap;
+    position: sticky; top: 0; z-index: 10;
   }
+  .table-scroll { overflow: auto; max-height: calc(100vh - 240px); }
   tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
   tbody tr:last-child { border-bottom: none; }
   tbody tr:hover { background: var(--bg3); }
@@ -360,7 +364,7 @@
   <div class="header-brand">
     <img src="data:image/jpeg;base64,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YOjm1zPPr6xpwWSicZMDLQZyRDOx5+Wtb45G3sVYrQefSQOAOXpbHZR+hkBaDN2lrIDCEyjMAIHU0IWhYreQF/VJpJMK+OTU9GjaKFCQl+UZoJdGSI3I2Xc1DsV+DsOcd2gPVz7u34TjlUH2SoE3iByg9qaAvFUT3tbCpCycghtE4A6aETJxdQGWF6VZMqBDkE3aDVJkkkyOFoCxV1WDEO+3DEM0k5AzG1Hso2FBfIiR01wVprpL7K+R+a+A+aOBFpVSVAEMs55faj+zCGOUPUMGImjIBSmP91//2gAMAwEAAgADAAAAEPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP8APvzzzzzzzzzyMfj/ALw8868358IEPXsbElhvlsAPvI888888888888888888888888888888888888888888888888888888888888888888888888888//EACYRAQABAwEIAgMAAAAAAAAAAAERACExQRBRYXGBkaHwMFBgscH/2gAIAQMBAT8Q+0UCWuE70Zifjc+p/CmgqEwILpcXoJQLHycj75qGRXcE06EIu8dNpJbmxSZlHSkhr2XNW+J60wckq5rq0YYokCZcDnl6caOblF3i3Y4TihPCRuZLRQSAp3RBGNajJyxZmA4Xl71Z5tg6c391MYKN4yzntRIkpvdxO4SidIBwzCEaz5oaZJDAukkTfMUjIWPd6vmlCwleiasFXl+Gf//EACYRAQACAgAEBgMBAAAAAAAAAAEAESExQVFhkRBxgaGx8DBQYMH/2gAIAQIBAT8Q/aArROs7TSK/Gb+h/rDRy1ai9cDEAZ9UGzSUy2UDmtQ1bEOScfEmsPgJNU94M+HwwaOV16Qm4DRFZUui8Da/HeYWodeRgirgb4dNtwAoD2XbdXLyNF0lWvXFHbEz0Z2+vkfEqNQTF6K13jgQBjBuuaMSABTbVi3wr2i1UGy0ONN1jVwqFl/eQHtBSljPqqPT0cf4z//EACYQAQEAAwABAwMEAwAAAAAAAAERACExQRBRYUBxgXCRobEg0fD/2gAIAQEAAT8Q/WI8iQ1rlIX49KQvPQ175mLJsQifJ9IZY1UgHu4iMg58v7gE/k3D8fQZsoEOx9HCXTwAWDXoVADif2P6TjoJG18JVPwcIZpd1dtPy7KdB5wJ3KJSGqKyLbF09TZsQUQ8dmGALeIPyDuET7pWPo8aw+XWwxbgyhFTBNDds30KeUroRwQeCYlNjFp7JG0bKmS1mDbGmSmvIf4NbXwKoAgUjeB98KJyOg/8ga9VR9i5tj8MPAqidxY3TbvonaJoXeh5l5EpphNwKmzq6el4TPFMo8kfcK7XNHhzv0aKnUwrG4zRBHERCC5o8ffznx/tf7yPAFVZ6ERN9FLTomF0juwVsho6PeXzlYYnyw/E7f1PpP8AhXO7+fOUfgQFoUpCLPsNerM0GtQg/fHZllKVpKVaAXeW5feKYol2FJXVMBtknhUNz2orszJIVdCwFM0QIl4+bKIEofYBct8eIqTcAfutg8pMwoohIFBN53DqiKAOVoFANNGGAXqkOoj2kpt1Vkl0xgFCwKSSK7xki6cAxRA3Q2afD3XWzPtQLLQJN2lvg2aYJoqoE45DjYkFGVCCKomTktep0PC0RRi7qeiBQQU2gybbArDuGsoFqG8eSrfN/Dmmukig7f4Bfxk0L+Yzq91ar5V9NfFizZdiLVC62IIaVBS2qCYQoCQ1ji/eg7KL8BU+bknp9IOxANBuhdpjUWe4BioNHgOYm2pzw8puCJANulGirEuiBmyqaKnLmepS0iUQapzDaOotVFRQkoNDWFaQGXC2DyrRF3hKcmh3JRxoru4Ce0miCAkREFfGP7LJRLYtRTe9AWLOIPOxXXGITbUGdvWhByEQVCM4AjDfBsBUITVAhdYFTjcIi5yEqbXSFXyNYDIWwtE4hjhrgxVv2RB+Gjscr6AiGziGoe1XmPAGsbQd8UD+DhH6VdXrsFiSH29Xz49PlYHETRwAAEDQH66//9k=" alt="Giza Arabia" style="height:42px;width:42px;object-fit:contain;border-radius:50%;background:#ffffff;padding:4px;flex-shrink:0;">
     <div style="margin-left:4px">
-      <div class="header-title">Giza Arabia</div>
+      <div class="header-title">Pulse by Solutions</div>
       <div class="header-sub">Pre-Sales &amp; Technical Workflow</div>
     </div>
   </div>
@@ -408,7 +412,6 @@
               <th>Pre-Sales Name</th>
               <th>Submit Date</th>
               <th>Init Date</th>
-              <th>Clarif. Date</th>
               <th>Status</th>
               <th>Dependency</th>
               <th>Final Feedback</th>
@@ -437,6 +440,7 @@
               <th>RFP Files</th>
               <th>Pre-Sales Name</th>
               <th>Submit Date</th>
+              <th>Clarif. Date</th>
               <th>Status</th>
               <th>Technical Name</th>
               <th>Comments</th>
@@ -521,7 +525,7 @@
         </div>
         <div class="form-group">
           <label>Pre-Sales Name</label>
-          <input type="text" id="f_sales_name" placeholder="Pre-Sales member name">
+<select id="f_sales_name"><option value="">— Select —</option><option value="Ahmed Kamel">Ahmed Kamel</option><option value="Sara Nasser">Sara Nasser</option><option value="Mona Hassan">Mona Hassan</option><option value="Rania Saleh">Rania Saleh</option></select>
         </div>
         <div class="form-group">
           <label>Submission Date</label>
@@ -529,15 +533,27 @@
         </div>
         <div class="form-group">
           <label>Init Date <span id="init_date_note" style="font-size:10px;color:var(--text3);font-weight:400"></span></label>
-          <input type="date" id="f_init_date">
+          <input type="date" id="f_init_date" readonly style="opacity:0.5;cursor:not-allowed;background:var(--bg3);border-color:var(--border)" title="Auto-set on creation — cannot be changed">
         </div>
         <div class="form-group">
           <label>Clarification Date</label>
           <input type="date" id="f_clarif_date">
         </div>
-        <div class="form-group fg-full">
-          <label>Dependency</label>
-          <select id="f_dependency" style="appearance:none;cursor:pointer"><option value="Sales Team">Sales Team</option><option value="Pre-Sales Team">Pre-Sales Team</option><option value="Technical Team">Technical Team</option><option value="Management Team">Management Team</option></select>
+        <div class="form-group">
+          <label>Dependency — Team</label>
+          <select id="f_dependency" onchange="onDepChange('f_dependency','f_dep_person')" style="appearance:none;cursor:pointer">
+            <option value="">— Select Team —</option>
+            <option value="Sales Team">Sales Team</option>
+            <option value="Pre-Sales Team">Pre-Sales Team</option>
+            <option value="Technical Team">Technical Team</option>
+            <option value="Management Team">Management Team</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Dependency — Person</label>
+          <select id="f_dep_person" style="appearance:none;cursor:pointer">
+            <option value="">— Select Team first —</option>
+          </select>
         </div>
         <div class="form-group fg-full">
           <label>Final Feedback</label>
@@ -561,15 +577,27 @@
           </div>
           <div class="form-group">
             <label>Technical Reviewer Name</label>
-            <input type="text" id="f_tech_name" placeholder="Technical team member name">
+<select id="f_tech_name"><option value="">— Select —</option><option value="Khaled Mostafa">Khaled Mostafa</option><option value="Omar Fathy">Omar Fathy</option><option value="Mohamed Ali">Mohamed Ali</option><option value="Tarek Hassan">Tarek Hassan</option></select>
           </div>
           <div class="form-group fg-full">
             <label>Technical Comments</label>
             <textarea id="f_comments" placeholder="Technical notes, risk flags, clarification requests, revision reasons..."></textarea>
           </div>
-          <div class="form-group fg-full">
-            <label>Dependency</label>
-            <select id="f_tech_dependency" style="appearance:none;cursor:pointer"><option value="Sales Team">Sales Team</option><option value="Pre-Sales Team">Pre-Sales Team</option><option value="Technical Team">Technical Team</option><option value="Management Team">Management Team</option></select>
+          <div class="form-group">
+            <label>Dependency — Team</label>
+            <select id="f_tech_dependency" onchange="onDepChange('f_tech_dependency','f_tech_dep_person')" style="appearance:none;cursor:pointer">
+              <option value="">— Select Team —</option>
+              <option value="Sales Team">Sales Team</option>
+              <option value="Pre-Sales Team">Pre-Sales Team</option>
+              <option value="Technical Team">Technical Team</option>
+              <option value="Management Team">Management Team</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Dependency — Person</label>
+            <select id="f_tech_dep_person" style="appearance:none;cursor:pointer">
+              <option value="">— Select Team first —</option>
+            </select>
           </div>
           <div class="form-group fg-full" id="finalFeedbackGroup">
             <label>Final Feedback <span style="font-size:10px;color:var(--text3);font-weight:400">(available when status is Submitted, Won, or Cancelled)</span></label>
@@ -617,12 +645,19 @@
         <select id="ps_status"></select>
       </div>
       <div class="form-group">
-        <label>Dependency</label>
-        <select id="ps_dependency" style="appearance:none;cursor:pointer">
+        <label>Dependency — Team</label>
+        <select id="ps_dependency" onchange="onDepChange('ps_dependency','ps_dep_person')" style="appearance:none;cursor:pointer">
+          <option value="">— Select Team —</option>
           <option value="Sales Team">Sales Team</option>
           <option value="Pre-Sales Team">Pre-Sales Team</option>
           <option value="Technical Team">Technical Team</option>
           <option value="Management Team">Management Team</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Dependency — Person</label>
+        <select id="ps_dep_person" style="appearance:none;cursor:pointer">
+          <option value="">— Select Team first —</option>
         </select>
       </div>
       <div class="form-group fg-full">
@@ -631,7 +666,7 @@
       </div>
       <div class="form-group">
         <label>Pre-Sales Name</label>
-        <input type="text" id="ps_sales_name" placeholder="Pre-Sales member name">
+<select id="ps_sales_name"><option value="">— Select —</option><option value="Ahmed Kamel">Ahmed Kamel</option><option value="Sara Nasser">Sara Nasser</option><option value="Mona Hassan">Mona Hassan</option><option value="Rania Saleh">Rania Saleh</option></select>
       </div>
       <div class="form-group">
         <label>Submit Date</label>
@@ -736,6 +771,14 @@ let statusConfig = [
 
 function getAllStatuses(){ return statusConfig; }
 
+let _debounceTimer = null;
+function debounce(fn, delay=300){
+  return function(...args){
+    clearTimeout(_debounceTimer);
+    _debounceTimer = setTimeout(()=>fn(...args), delay);
+  };
+}
+
 function getStatusColor(label){
   const s = statusConfig.find(x=>x.label===label);
   return s ? s.color : '#8b92a8';
@@ -779,6 +822,22 @@ function rebuildStatusDropdown(){
     ps.innerHTML = statusConfig.map(s=>`<option value="${s.label}">${s.label}</option>`).join('');
     if(statusConfig.find(x=>x.label===cur)) ps.value=cur;
   }
+}
+
+// ─── TEAM MEMBERS ──────────────────────────────────────────
+const TEAM_MEMBERS = {
+  'Sales Team':       ['Rania Saleh','Mona Hassan','Karim Adel','Nadia Omar'],
+  'Pre-Sales Team':   ['Ahmed Kamel','Sara Nasser','Mohamed Tarek','Layla Fares'],
+  'Technical Team':   ['Khaled Mostafa','Omar Fathy','Dina Hani','Samy Farouk'],
+  'Management Team':  ['Ahmed El-Sayed','Hala Mahmoud','Wael Nour'],
+};
+function getMembersForTeam(team){ return TEAM_MEMBERS[team] || []; }
+function buildMemberSelect(selectId, team, currentVal){
+  const members = getMembersForTeam(team);
+  const opts = `<option value="">— Select Person —</option>` +
+    members.map(m=>`<option value="${m}" ${m===currentVal?'selected':''}>${m}</option>`).join('');
+  const el = document.getElementById(selectId);
+  if(el){ el.innerHTML = opts; if(currentVal) el.value = currentVal; }
 }
 
 // ─── STATE ─────────────────────────────────────────────────
@@ -875,6 +934,47 @@ function saveSettings(){
   showToast('Status options saved!');
 }
 
+// ─── DEPENDENCY HELPERS ────────────────────────────────────
+function onDepChange(depSelectId, personSelectId){
+  const team = document.getElementById(depSelectId)?.value || '';
+  const members = getMembersForTeam(team);
+  const pSel = document.getElementById(personSelectId);
+  if(!pSel) return;
+  pSel.innerHTML = `<option value="">— Select Person —</option>` +
+    members.map(m=>`<option value="${m}">${m}</option>`).join('');
+}
+
+function setDepFields(teamId, personId, teamVal, personVal){
+  const tSel = document.getElementById(teamId);
+  if(tSel){ tSel.value = teamVal||''; onDepChange(teamId, personId); }
+  const pSel = document.getElementById(personId);
+  if(pSel && personVal) pSel.value = personVal;
+}
+
+function getDepCombined(teamId, personId){
+  const team   = document.getElementById(teamId)?.value  || '';
+  const person = document.getElementById(personId)?.value || '';
+  return person ? `${team} — ${person}` : team;
+}
+
+// Populate presales name dropdown from Pre-Sales Team members
+function populateSalesSelect(selectId, currentVal){
+  const members = getMembersForTeam('Pre-Sales Team');
+  const el = document.getElementById(selectId);
+  if(!el) return;
+  el.innerHTML = `<option value="">— Select Pre-Sales Member —</option>` +
+    members.map(m=>`<option value="${m}" ${m===currentVal?'selected':''}>${m}</option>`).join('');
+}
+
+// Populate tech name dropdown from Technical Team members
+function populateTechSelect(selectId, currentVal){
+  const members = getMembersForTeam('Technical Team');
+  const el = document.getElementById(selectId);
+  if(!el) return;
+  el.innerHTML = `<option value="">— Select Technical Member —</option>` +
+    members.map(m=>`<option value="${m}" ${m===currentVal?'selected':''}>${m}</option>`).join('');
+}
+
 // ─── SHARED HELPERS ────────────────────────────────────────
 function rfpLink(r){
   return r.rfp_link
@@ -892,6 +992,12 @@ function histBtn(i){
 const psFilters  = { opp_name:'', opp_id:'', sales_name:'', status:'', dependency:'' };
 const techFilters = { opp_name:'', opp_id:'', sales_name:'', status:'', dependency:'' };
 
+function buildFilterRowOnce(containerId, filterObj, renderFn){
+  const el = document.getElementById(containerId);
+  if(el && el.children.length > 0) return; // already built — don't rebuild while typing
+  buildFilterRow(containerId, filterObj, renderFn);
+}
+
 function buildFilterRow(containerId, filterObj, renderFn){
   const el = document.getElementById(containerId);
   if(!el) return;
@@ -905,7 +1011,7 @@ function buildFilterRow(containerId, filterObj, renderFn){
         <div class="filter-box">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" placeholder="${{opp_name:'Opp Name',opp_id:'Opp ID',sales_name:'Pre-Sales Name'}[k]}..." value="${filterObj[k]}"
-            oninput="setFilter('${containerId}','${k}',this.value)" style="width:${k==='opp_name'?140:90}px" />
+            oninput="setFilterDebounced('${containerId}','${k}',this.value)" style="width:${k==='opp_name'?140:90}px" />
         </div>`).join('')}
       <div class="filter-box">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
@@ -933,10 +1039,14 @@ function setFilter(containerId, key, val){
   if(containerId==='psFilterRow')  renderPresalesTable();
   else                             renderTechTable();
 }
+const setFilterDebounced = debounce(setFilter, 250);
 
 function clearFilters(containerId){
   const obj = containerId==='psFilterRow' ? psFilters : techFilters;
   Object.keys(obj).forEach(k=>obj[k]='');
+  // Force rebuild filter row after clearing
+  const el = document.getElementById(containerId);
+  if(el) el.innerHTML = '';
   if(containerId==='psFilterRow')  renderPresalesTable();
   else                             renderTechTable();
 }
@@ -953,7 +1063,7 @@ function applyFilters(r, filters){
 
 // ─── PRE-SALES TABLE ─────────────────────────────────────────
 function renderPresalesTable(){
-  buildFilterRow('psFilterRow', psFilters, renderPresalesTable);
+  buildFilterRowOnce('psFilterRow', psFilters, renderPresalesTable);
   const tbody = document.getElementById('oppBodyPresales');
   if(!tbody) return;
   tbody.innerHTML='';
@@ -972,7 +1082,6 @@ function renderPresalesTable(){
       <td class="cell-muted" style="font-size:12px">${r.sales_name||'—'}</td>
       <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.submit_date||'—'}</td>
       <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.init_date||'—'}</td>
-      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td>
       <td>${statusDropdown(r,i)}</td>
       <td class="cell-muted" style="font-size:12px">${r.dependency||'—'}</td>
       <td>${feedbackCell}</td>
@@ -989,7 +1098,7 @@ function renderPresalesTable(){
 
 // ─── TECHNICAL TABLE ─────────────────────────────────────────
 function renderTechTable(){
-  buildFilterRow('techFilterRow', techFilters, renderTechTable);
+  buildFilterRowOnce('techFilterRow', techFilters, renderTechTable);
   const tbody = document.getElementById('oppBodyTech');
   if(!tbody) return;
   tbody.innerHTML='';
@@ -1007,6 +1116,7 @@ function renderTechTable(){
       <td>${rfpLink(r)}</td>
       <td class="cell-muted" style="font-size:12px">${r.sales_name||'—'}</td>
       <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.submit_date||'—'}</td>
+      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td>
       <td>${statusDropdown(r,i)}</td>
       <td>${r.tech_name?`<div class="tech-name-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>${r.tech_name}</div>`:'<span class="cell-muted">—</span>'}</td>
       <td>${trunc(r.comments)}</td>
@@ -1023,6 +1133,70 @@ function renderTechTable(){
   });
 }
 
+// ─── BODY-ONLY RENDERS (for status changes) ───────────────
+function _renderPresalesBody(){
+  const tbody = document.getElementById('oppBodyPresales');
+  if(!tbody) return;
+  const finalStatuses = ['Submitted','Won','Cancelled'];
+  tbody.innerHTML = '';
+  rows.forEach((r,i)=>{
+    if(!applyFilters(r, psFilters)) return;
+    const feedbackCell = finalStatuses.includes(r.status)
+      ? trunc(r.feedback,100)
+      : `<span style="font-size:11px;color:var(--text3);font-style:italic">Available when Submitted / Won / Cancelled</span>`;
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><span class="cell-name">${r.opp_name}</span></td>
+      <td><span class="cell-id">${r.opp_id}</span></td>
+      <td>${trunc(r.subject,150)}</td>
+      <td>${rfpLink(r)}</td>
+      <td class="cell-muted" style="font-size:12px">${r.sales_name||'—'}</td>
+      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.submit_date||'—'}</td>
+      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.init_date||'—'}</td>
+      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td>
+      <td>${statusDropdown(r,i)}</td>
+      <td class="cell-muted" style="font-size:12px">${r.dependency||'—'}</td>
+      <td>${feedbackCell}</td>
+      <td><div class="actions">
+        <button class="btn-act" onclick="openPresalesUpdate(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Update</button>
+        ${histBtn(i)}
+      </div></td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function _renderTechBody(){
+  const tbody = document.getElementById('oppBodyTech');
+  if(!tbody) return;
+  const finalStatuses = ['Submitted','Won','Cancelled'];
+  tbody.innerHTML = '';
+  rows.forEach((r,i)=>{
+    if(!applyFilters(r, techFilters)) return;
+    const feedbackCell = finalStatuses.includes(r.status)
+      ? trunc(r.feedback,100)
+      : `<span style="font-size:11px;color:var(--text3);font-style:italic">Available when Submitted / Won / Cancelled</span>`;
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><span class="cell-name">${r.opp_name}</span></td>
+      <td><span class="cell-id">${r.opp_id}</span></td>
+      <td>${trunc(r.subject,150)}</td>
+      <td>${rfpLink(r)}</td>
+      <td class="cell-muted" style="font-size:12px">${r.sales_name||'—'}</td>
+      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.submit_date||'—'}</td>
+      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td>
+      <td>${statusDropdown(r,i)}</td>
+      <td>${r.tech_name?`<div class="tech-name-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>${r.tech_name}</div>`:'<span class="cell-muted">—</span>'}</td>
+      <td>${trunc(r.comments)}</td>
+      <td class="cell-muted" style="font-size:12px">${r.dependency||'—'}</td>
+      <td>${feedbackCell}</td>
+      <td><div class="actions">
+        <button class="btn-act tech" onclick="openTechUpdate(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Update</button>
+        ${histBtn(i)}
+      </div></td>`;
+    tbody.appendChild(tr);
+  });
+}
+
 // ─── INLINE STATUS CHANGE ─────────────────────────────────
 function quickStatusChange(i, newStatus){
   const r = rows[i];
@@ -1033,8 +1207,11 @@ function quickStatusChange(i, newStatus){
   const sel = document.querySelector(`.status-select[data-idx="${i}"]`);
   if(sel) sel.style.cssText = getSelectStyle(newStatus);
 
-  // Refresh from sheet after webhook
-  setTimeout(loadFromSheet, 1500);
+  // Re-render tables without rebuilding filter row
+  if(document.getElementById('pane-presales').classList.contains('active')) _renderPresalesBody();
+  if(document.getElementById('pane-technical').classList.contains('active')) _renderTechBody();
+  // Sync to sheet in background
+  setTimeout(loadFromSheet, 2000);
 
   // History entry
   const now = new Date().toISOString().slice(0,16).replace('T',' ');
@@ -1099,6 +1276,8 @@ function openEdit(i){
   document.getElementById('f_init_date').readOnly = true;
   document.getElementById('f_init_date').style.opacity = '0.5';
   document.getElementById('init_date_note').textContent = '(locked — set on creation)';
+  populateSalesSelect('f_sales_name', '');
+  populateTechSelect('f_tech_name', '');
   document.getElementById('mainOverlay').classList.add('open');
 }
 
@@ -1119,8 +1298,9 @@ function openPresalesUpdate(i){
   document.getElementById('ps_sales_name').value = r.sales_name||'';
   document.getElementById('ps_submit_date').value= r.submit_date||'';
   document.getElementById('ps_clarif_date').value= r.clarif_date||'';
-  const depSel = document.getElementById('ps_dependency');
-  if(depSel) depSel.value = r.dependency||'';
+  populateSalesSelect('ps_sales_name', r.sales_name||'');
+  const depParts = (r.dependency||'').split(' — ');
+  setDepFields('ps_dependency','ps_dep_person', depParts[0]||'', depParts[1]||'');
   document.getElementById('psUpdateOverlay').classList.add('open');
 }
 
@@ -1135,9 +1315,10 @@ function savePsUpdate(){
   const newStatus=document.getElementById('ps_status').value;
   r.status      = newStatus;
   r.ps_comments = document.getElementById('ps_comments').value;
-  r.dependency  = document.getElementById('ps_dependency').value;
+  r.dependency  = getDepCombined('ps_dependency','ps_dep_person');
   r.rfp_link    = document.getElementById('ps_rfp_link').value    || r.rfp_link;
   r.sales_name  = document.getElementById('ps_sales_name').value  || r.sales_name;
+  r.tech_name   = r.tech_name; // tech name not editable from PS modal
   r.submit_date = document.getElementById('ps_submit_date').value || r.submit_date;
   r.clarif_date = document.getElementById('ps_clarif_date').value || r.clarif_date;
   // history
@@ -1163,7 +1344,9 @@ function openTechUpdate(i){
   document.getElementById('f_status').value         = r.status||statusConfig[0]?.label||'New';
   document.getElementById('f_tech_name').value      = r.tech_name||'';
   document.getElementById('f_comments').value       = r.comments||'';
-  document.getElementById('f_tech_dependency').value= r.dependency||'';
+  populateTechSelect('f_tech_name', r.tech_name||'');
+  const depPartsTech = (r.dependency||'').split(' — ');
+  setDepFields('f_tech_dependency','f_tech_dep_person', depPartsTech[0]||'', depPartsTech[1]||'');
   const finalStatuses = ['Submitted','Won','Cancelled'];
   const feedbackEl = document.getElementById('finalFeedbackGroup');
   if(feedbackEl) feedbackEl.style.display = finalStatuses.includes(r.status)?'block':'none';
@@ -1228,7 +1411,7 @@ function saveOpp(){
     r.submit_date = document.getElementById('f_submit_date').value;
     r.init_date   = isNew ? document.getElementById('f_init_date').value : (prev.init_date || document.getElementById('f_init_date').value);
     r.clarif_date = document.getElementById('f_clarif_date').value;
-    r.dependency  = document.getElementById('f_dependency').value;
+    r.dependency  = getDepCombined('f_dependency','f_dep_person');
     r.ps_comments = document.getElementById('f_ps_comments')?.value || r.ps_comments || '';
     // feedback only writable when status is Submitted
     const newSt = document.getElementById('f_status').value;
@@ -1344,12 +1527,13 @@ async function showHistory(i){
         return hid === rid || hid.includes(rid) || rid.includes(hid);
       })
       .map(h => ({
-        role:    h.role    || 'presales',
-        action:  h.action  || '',
-        status:  h.action  || '',
-        comment: h.comment || '',
-        date:    h.date    || '',
-        actor:   h.actor   || '',
+        role:       h.role       || 'presales',
+        action:     h.action     || '',
+        status:     h.action     || '',
+        comment:    h.comment    || '',
+        date:       h.date       || '',
+        actor:      h.actor      || '',
+        dependency: h.dependency || '',
       }))
       .sort((a,b) => a.date.localeCompare(b.date));
 
@@ -1481,8 +1665,8 @@ function switchTab(tab){
     document.getElementById('pane-'+p).classList.toggle('active', p===tab);
   });
   // set role and refresh on every tab switch
-  if(tab==='presales')  { currentRole='presales';  loadFromSheet(); }
-  if(tab==='technical') { currentRole='technical'; loadFromSheet(); }
+  if(tab==='presales')  { currentRole='presales';  const e=document.getElementById('psFilterRow');  if(e) e.innerHTML=''; loadFromSheet(); }
+  if(tab==='technical') { currentRole='technical'; const e=document.getElementById('techFilterRow'); if(e) e.innerHTML=''; loadFromSheet(); }
   if(tab==='analytics') { renderAnalytics();                        }
 }
 
@@ -1496,6 +1680,25 @@ function showToast(msg){
 
 // Click outside to close
 document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');}));
+
+// ── DEPENDENCY INDIVIDUAL ──────────────────────────────────
+const DEP_MEMBERS = {"Sales Team": ["Ahmed Kamel", "Sara Nasser", "Mona Hassan", "Rania Saleh"], "Pre-Sales Team": ["Ahmed Kamel", "Sara Nasser", "Mona Hassan", "Rania Saleh"], "Technical Team": ["Khaled Mostafa", "Omar Fathy", "Mohamed Ali", "Tarek Hassan"], "Management Team": ["Ahmed Bayoumi", "Khaled Mansour", "Sara Ibrahim"]};
+
+function updateDepIndividual(selectId, team){
+  const sel = document.getElementById(selectId);
+  if(!sel) return;
+  const members = DEP_MEMBERS[team] || [];
+  sel.innerHTML = '<option value="">— Select Person —</option>' +
+    members.map(m=>`<option value="${m}">${m}</option>`).join('');
+}
+
+function setDepFields(teamId, indivId, teamVal, indivVal){
+  const tsel = document.getElementById(teamId);
+  if(tsel) tsel.value = teamVal||'';
+  updateDepIndividual(indivId, teamVal);
+  const isel = document.getElementById(indivId);
+  if(isel) isel.value = indivVal||'';
+}
 
 // ── INIT ────────────────────────────────────────────────────
 currentRole = 'presales';
