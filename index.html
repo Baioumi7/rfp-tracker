@@ -412,6 +412,7 @@
               <th>Pre-Sales Name</th>
               <th>Submit Date</th>
               <th>Init Date</th>
+              <th>Clarif. Date</th>
               <th>Status</th>
               <th>Dependency</th>
               <th>Final Feedback</th>
@@ -989,8 +990,8 @@ function histBtn(i){
 }
 
 // ─── MULTI-COLUMN FILTER STATE ───────────────────────────────
-const psFilters  = { opp_name:'', opp_id:'', sales_name:'', status:'', dependency:'' };
-const techFilters = { opp_name:'', opp_id:'', sales_name:'', status:'', dependency:'' };
+const psFilters  = { opp_name:'', opp_id:'', sales_name:'', tech_name:'', status:'', dependency:'' };
+const techFilters = { opp_name:'', opp_id:'', sales_name:'', tech_name:'', status:'', dependency:'' };
 
 function buildFilterRowOnce(containerId, filterObj, renderFn){
   const el = document.getElementById(containerId);
@@ -1005,6 +1006,9 @@ function buildFilterRow(containerId, filterObj, renderFn){
   // unique values for status dropdown
   const statuses = ['', ...statusConfig.map(s=>s.label)];
 
+  // unique tech names from current rows
+  const techNames = ['', ...Array.from(new Set(rows.map(r=>r.tech_name).filter(Boolean))).sort()];
+
   el.innerHTML = `
     <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
       ${['opp_name','opp_id','sales_name'].map(k=>`
@@ -1013,6 +1017,13 @@ function buildFilterRow(containerId, filterObj, renderFn){
           <input type="text" placeholder="${{opp_name:'Opp Name',opp_id:'Opp ID',sales_name:'Pre-Sales Name'}[k]}..." value="${filterObj[k]}"
             oninput="setFilterDebounced('${containerId}','${k}',this.value)" style="width:${k==='opp_name'?140:90}px" />
         </div>`).join('')}
+      <div class="filter-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <select oninput="setFilter('${containerId}','tech_name',this.value)" style="background:none;border:none;outline:none;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;width:130px">
+          <option value="">All Tech Names</option>
+          ${techNames.filter(n=>n).map(n=>`<option value="${n}" ${filterObj.tech_name===n?'selected':''}>${n}</option>`).join('')}
+        </select>
+      </div>
       <div class="filter-box">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
         <select oninput="setFilter('${containerId}','dependency',this.value)" style="background:none;border:none;outline:none;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;width:130px">
@@ -1056,6 +1067,7 @@ function applyFilters(r, filters){
   if(q('opp_name')   && !(r.opp_name||'').toLowerCase().includes(q('opp_name')))    return false;
   if(q('opp_id')     && !(r.opp_id||'').toLowerCase().includes(q('opp_id')))        return false;
   if(q('sales_name') && !(r.sales_name||'').toLowerCase().includes(q('sales_name'))) return false;
+  if(q('tech_name')  && !(r.tech_name||'').toLowerCase().includes(q('tech_name')))  return false;
   if(q('status')     && r.status !== filters.status)                                  return false;
   if(q('dependency') && !(r.dependency||'').toLowerCase().includes(q('dependency'))) return false;
   return true;
@@ -1082,6 +1094,7 @@ function renderPresalesTable(){
       <td class="cell-muted" style="font-size:12px">${r.sales_name||'—'}</td>
       <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.submit_date||'—'}</td>
       <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.init_date||'—'}</td>
+      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td>
       <td>${statusDropdown(r,i)}</td>
       <td class="cell-muted" style="font-size:12px">${r.dependency||'—'}</td>
       <td>${feedbackCell}</td>
