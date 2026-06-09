@@ -415,6 +415,7 @@
               <th>Clarif. Date</th>
               <th>Status</th>
               <th>Dependency</th>
+              <th>Dependency Person</th>
               <th>Final Feedback</th>
               <th>Actions</th>
             </tr>
@@ -446,6 +447,7 @@
               <th>Technical Name</th>
               <th>Comments</th>
               <th>Dependency</th>
+              <th>Dependency Person</th>
               <th>Final Feedback</th>
               <th>Actions</th>
             </tr>
@@ -1009,14 +1011,24 @@ function buildFilterRow(containerId, filterObj, renderFn){
   // unique tech names from current rows
   const techNames = ['', ...Array.from(new Set(rows.map(r=>r.tech_name).filter(Boolean))).sort()];
 
+  // unique sales names from current rows
+  const salesNames = ['', ...Array.from(new Set(rows.map(r=>r.sales_name).filter(Boolean))).sort()];
+
   el.innerHTML = `
     <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
-      ${['opp_name','opp_id','sales_name'].map(k=>`
+      ${['opp_name','opp_id'].map(k=>`
         <div class="filter-box">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" placeholder="${{opp_name:'Opp Name',opp_id:'Opp ID',sales_name:'Pre-Sales Name'}[k]}..." value="${filterObj[k]}"
-            oninput="setFilterDebounced('${containerId}','${k}',this.value)" style="width:${k==='opp_name'?140:90}px" />
+          <input type="text" placeholder="${{opp_name:'Opp Name',opp_id:'Opp ID'}[k]}..." value="${filterObj[k]}"
+            oninput="setFilter('${containerId}','${k}',this.value)" style="width:${k==='opp_name'?140:90}px" />
         </div>`).join('')}
+      <div class="filter-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg>
+        <select oninput="setFilter('${containerId}','sales_name',this.value)" style="background:none;border:none;outline:none;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;width:130px">
+          <option value="">All Pre-Sales</option>
+          ${salesNames.filter(n=>n).map(n=>`<option value="${n}" ${filterObj.sales_name===n?'selected':''}>${n}</option>`).join('')}
+        </select>
+      </div>
       <div class="filter-box">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         <select oninput="setFilter('${containerId}','tech_name',this.value)" style="background:none;border:none;outline:none;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;width:130px">
@@ -1064,12 +1076,14 @@ function clearFilters(containerId){
 
 function applyFilters(r, filters){
   const q = (field) => filters[field]?.toLowerCase()||'';
-  if(q('opp_name')   && !(r.opp_name||'').toLowerCase().includes(q('opp_name')))    return false;
-  if(q('opp_id')     && !(r.opp_id||'').toLowerCase().includes(q('opp_id')))        return false;
-  if(q('sales_name') && !(r.sales_name||'').toLowerCase().includes(q('sales_name'))) return false;
-  if(q('tech_name')  && !(r.tech_name||'').toLowerCase().includes(q('tech_name')))  return false;
-  if(q('status')     && r.status !== filters.status)                                  return false;
-  if(q('dependency') && !(r.dependency||'').toLowerCase().includes(q('dependency'))) return false;
+  // Always convert to string first — opp_id can be a number from Google Sheets
+  const str = (v) => String(v ?? '').toLowerCase();
+  if(q('opp_name')   && !str(r.opp_name).includes(q('opp_name')))    return false;
+  if(q('opp_id')     && !str(r.opp_id).includes(q('opp_id')))        return false;
+  if(q('sales_name') && !str(r.sales_name).includes(q('sales_name'))) return false;
+  if(q('tech_name')  && !str(r.tech_name).includes(q('tech_name')))  return false;
+  if(q('status')     && r.status !== filters.status)                   return false;
+  if(q('dependency') && !str(r.dependency).includes(q('dependency'))) return false;
   return true;
 }
 
@@ -1096,7 +1110,8 @@ function renderPresalesTable(){
       <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.init_date||'—'}</td>
       <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td>
       <td>${statusDropdown(r,i)}</td>
-      <td class="cell-muted" style="font-size:12px">${r.dependency||'—'}</td>
+      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').split(' — ')[0]}</td>
+      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').includes(' — ') ? (r.dependency||'—').split(' — ')[1] : '—'}</td>
       <td>${feedbackCell}</td>
       <td>
         <div class="actions">
@@ -1133,7 +1148,8 @@ function renderTechTable(){
       <td>${statusDropdown(r,i)}</td>
       <td>${r.tech_name?`<div class="tech-name-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>${r.tech_name}</div>`:'<span class="cell-muted">—</span>'}</td>
       <td>${trunc(r.comments)}</td>
-      <td class="cell-muted" style="font-size:12px">${r.dependency||'—'}</td>
+      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').split(' — ')[0]}</td>
+      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').includes(' — ') ? (r.dependency||'—').split(' — ')[1] : '—'}</td>
       <td>${feedbackCell}</td>
       <td>
         <div class="actions">
@@ -1168,7 +1184,8 @@ function _renderPresalesBody(){
       <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.init_date||'—'}</td>
       <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td>
       <td>${statusDropdown(r,i)}</td>
-      <td class="cell-muted" style="font-size:12px">${r.dependency||'—'}</td>
+      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').split(' — ')[0]}</td>
+      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').includes(' — ') ? (r.dependency||'—').split(' — ')[1] : '—'}</td>
       <td>${feedbackCell}</td>
       <td><div class="actions">
         <button class="btn-act" onclick="openPresalesUpdate(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Update</button>
@@ -1200,7 +1217,8 @@ function _renderTechBody(){
       <td>${statusDropdown(r,i)}</td>
       <td>${r.tech_name?`<div class="tech-name-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>${r.tech_name}</div>`:'<span class="cell-muted">—</span>'}</td>
       <td>${trunc(r.comments)}</td>
-      <td class="cell-muted" style="font-size:12px">${r.dependency||'—'}</td>
+      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').split(' — ')[0]}</td>
+      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').includes(' — ') ? (r.dependency||'—').split(' — ')[1] : '—'}</td>
       <td>${feedbackCell}</td>
       <td><div class="actions">
         <button class="btn-act tech" onclick="openTechUpdate(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Update</button>
@@ -1270,8 +1288,10 @@ function openAdd(){
   // Auto-set init_date to today (locked — cannot be changed)
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('f_init_date').value = today;
-  document.getElementById('f_init_date').readOnly = false;
-  document.getElementById('init_date_note').textContent = '(auto-set to today)';
+  document.getElementById('f_init_date').readOnly = true;
+  document.getElementById('f_init_date').style.opacity = '0.5';
+  document.getElementById('f_init_date').style.cursor = 'not-allowed';
+  document.getElementById('init_date_note').textContent = '(auto-set — locked)';
   document.getElementById('mainOverlay').classList.add('open');
 }
 
@@ -1381,6 +1401,14 @@ function saveOpp(){
   // ── VALIDATION (only for new opp by presales) ──────────────
   const presalesVisible = document.getElementById('secPresales').style.display!=='none';
   if(isNew && presalesVisible){
+    // Check opp_id uniqueness
+    const newOppId = document.getElementById('f_opp_id')?.value?.trim();
+    if(newOppId && rows.some(r=>r.opp_id===newOppId)){
+      const el=document.getElementById('f_opp_id');
+      if(el) el.style.borderColor='var(--red)';
+      showToast('⚠️ Opp ID already exists: ' + newOppId);
+      return;
+    }
     const required = [
       { id:'f_opp_id',      label:'Opp ID' },
       { id:'f_opp_name',    label:'Opp Name' },
@@ -1766,7 +1794,7 @@ async function loadFromSheet(){
 
     // Map opportunities and attach history
     rows = data.map(r => ({
-      opp_id:      r.opp_id      || '',
+      opp_id:      String(r.opp_id ?? '').trim(),
       opp_name:    r.opp_name    || '',
       subject:     r.subject     || '',
       rfp_link:    r.rfp_link    || '',
