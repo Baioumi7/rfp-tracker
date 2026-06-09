@@ -368,11 +368,30 @@
       <div class="header-sub">Pre-Sales &amp; Technical Workflow</div>
     </div>
   </div>
-  <button class="btn-settings" onclick="openSettings()" title="Manage Status Options">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-    Settings
-  </button>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div id="userPickerWrap" style="display:flex;align-items:center;gap:7px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 12px;cursor:pointer" onclick="openUserPicker()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;color:var(--accent);flex-shrink:0"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg>
+      <span id="loggedInLabel" style="font-size:13px;color:var(--text);white-space:nowrap">— Select User —</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px;color:var(--text3)"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <button class="btn-settings" onclick="openSettings()" title="Manage Status Options">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      Settings
+    </button>
+  </div>
 </header>
+
+<!-- ── USER PICKER MODAL ── -->
+<div id="userPickerOverlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);align-items:center;justify-content:center">
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;width:320px;max-width:90vw">
+    <div style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;color:var(--accent)"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg>
+      Who are you?
+    </div>
+    <div id="userPickerList" style="display:flex;flex-direction:column;gap:6px;max-height:320px;overflow-y:auto"></div>
+    <button onclick="closeUserPicker()" style="margin-top:16px;width:100%;padding:8px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text3);cursor:pointer;font-size:13px">Cancel</button>
+  </div>
+</div>
 
 <div class="tabs-bar">
   <button class="tab-btn active" data-tab="presales" onclick="switchTab('presales')">
@@ -846,6 +865,50 @@ function buildMemberSelect(selectId, team, currentVal){
 // ─── STATE ─────────────────────────────────────────────────
 let currentRole = 'presales';
 let editIdx = -1;
+let loggedInUser = localStorage.getItem('pulseLoggedInUser') || '';
+
+// ─── USER PICKER ───────────────────────────────────────────
+function getAllMembers(){
+  const all = new Set();
+  Object.values(DEP_MEMBERS||{}).forEach(arr=>arr.forEach(m=>all.add(m)));
+  return [...all].sort();
+}
+
+function openUserPicker(){
+  const members = getAllMembers();
+  const list = document.getElementById('userPickerList');
+  list.innerHTML = members.map(m=>`
+    <button onclick="setLoggedInUser('${m}')" style="
+      text-align:left;padding:10px 14px;border-radius:8px;border:1px solid ${loggedInUser===m?'var(--accent)':'var(--border)'};
+      background:${loggedInUser===m?'rgba(var(--accent-rgb,99,102,241),0.12)':'var(--surface2)'};
+      color:${loggedInUser===m?'var(--accent)':'var(--text)'};
+      cursor:pointer;font-size:13px;display:flex;align-items:center;gap:8px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex-shrink:0"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg>
+      ${m}
+      ${loggedInUser===m?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;margin-left:auto"><polyline points="20 6 9 17 4 12"/></svg>':''}
+    </button>`).join('');
+  document.getElementById('userPickerOverlay').style.display='flex';
+}
+
+function closeUserPicker(){
+  document.getElementById('userPickerOverlay').style.display='none';
+}
+
+function setLoggedInUser(name){
+  loggedInUser = name;
+  localStorage.setItem('pulseLoggedInUser', name);
+  document.getElementById('loggedInLabel').textContent = name;
+  document.getElementById('loggedInLabel').style.color = 'var(--accent)';
+  closeUserPicker();
+  showToast('✓ Logged in as ' + name);
+}
+
+// Close user picker on backdrop click
+document.addEventListener('click', function(e){
+  const overlay = document.getElementById('userPickerOverlay');
+  if(overlay && e.target === overlay) closeUserPicker();
+});
+
 
 let rows = []; // loaded from Google Sheets via n8n
 
@@ -1357,7 +1420,7 @@ function savePsUpdate(){
   // history
   const now=new Date().toISOString().slice(0,16).replace('T',' ');
   if(!r.history) r.history=[];
-  r.history.push({role:'presales',action:newStatus,status:newStatus,comment:r.ps_comments,dependency:r.dependency||'',date:now,actor:r.sales_name||'Pre-Sales'});
+  r.history.push({role:'presales',action:newStatus,status:newStatus,comment:r.ps_comments,dependency:r.dependency||'',date:now,actor:loggedInUser||r.sales_name||'Pre-Sales'});
   closeModal('psUpdateOverlay');
   setTimeout(loadFromSheet, 1500);
   const _action=getStatusAction(newStatus)||'update';
@@ -1478,7 +1541,7 @@ function saveOpp(){
 
   // Append history — use correct comment per role
   const now = new Date().toISOString().slice(0,16).replace('T',' ');
-  const actor   = currentRole==='presales' ? (r.sales_name||'Pre-Sales') : (r.tech_name||'Technical');
+  const actor   = loggedInUser || (currentRole==='presales' ? (r.sales_name||'Pre-Sales') : (r.tech_name||'Technical'));
   const histComment = currentRole==='presales' ? (r.ps_comments||'') : (r.comments||'');
   r.history.push({ role:currentRole, action:r.status, status:r.status, comment:histComment, dependency:r.dependency||'', date:now, actor });
 
@@ -1743,6 +1806,11 @@ function setDepFields(teamId, indivId, teamVal, indivVal){
 
 // ── INIT ────────────────────────────────────────────────────
 currentRole = 'presales';
+// Restore logged-in user label on page load
+if(loggedInUser){
+  const lbl = document.getElementById('loggedInLabel');
+  if(lbl){ lbl.textContent = loggedInUser; lbl.style.color='var(--accent)'; }
+}
 rebuildStatusStyles();
 rebuildStatusDropdown();
 
