@@ -10,174 +10,76 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0f1117;
-    --bg2: #161b27;
-    --bg3: #1e2535;
-    --bg4: #252d3d;
-    --border: rgba(255,255,255,0.08);
-    --border2: rgba(255,255,255,0.14);
-    --text: #e8eaf0;
-    --text2: #8b92a8;
-    --text3: #555e75;
-    --accent: #0077c8;
-    --accent2: #005fa3;
-    --accent-glow: rgba(0,119,200,0.18);
-    --green: #22c57a;
-    --green-bg: rgba(34,197,122,0.12);
-    --amber: #f59e0b;
-    --amber-bg: rgba(245,158,11,0.12);
-    --red: #ef4444;
-    --red-bg: rgba(239,68,68,0.12);
-    --blue: #38bdf8;
-    --blue-bg: rgba(56,189,248,0.12);
-    --purple: #a78bfa;
-    --purple-bg: rgba(167,139,250,0.12);
-    --font: 'IBM Plex Sans', sans-serif;
-    --mono: 'IBM Plex Mono', monospace;
-    --radius: 10px;
-    --radius-lg: 14px;
+    --bg: #0f1117; --bg2: #161b27; --bg3: #1e2535; --bg4: #252d3d;
+    --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.14);
+    --text: #e8eaf0; --text2: #8b92a8; --text3: #555e75;
+    --accent: #0077c8; --accent2: #005fa3; --accent-glow: rgba(0,119,200,0.18);
+    --green: #22c57a; --green-bg: rgba(34,197,122,0.12);
+    --amber: #f59e0b; --amber-bg: rgba(245,158,11,0.12);
+    --red: #ef4444; --red-bg: rgba(239,68,68,0.12);
+    --blue: #38bdf8; --blue-bg: rgba(56,189,248,0.12);
+    --purple: #a78bfa; --purple-bg: rgba(167,139,250,0.12);
+    --font: 'IBM Plex Sans', sans-serif; --mono: 'IBM Plex Mono', monospace;
+    --radius: 10px; --radius-lg: 14px;
   }
 
   body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; font-size: 14px; line-height: 1.6; }
 
-  /* HEADER */
-  .header {
-    background: var(--bg2); border-bottom: 1px solid var(--border);
-    padding: 0 2rem; display: flex; align-items: center;
-    justify-content: space-between; height: 60px;
-    position: sticky; top: 0; z-index: 50;
-  }
+  .header { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 50; }
   .header-brand { display: flex; align-items: center; gap: 10px; }
-  /* logo img used instead */
   .header-title { font-size: 15px; font-weight: 500; }
   .header-sub { font-size: 12px; color: var(--text3); }
 
-  /* role switcher removed — access via tabs */
-
-  /* TABS */
-  .tabs-bar {
-    display: flex; padding: 0 2rem;
-    background: var(--bg2); border-bottom: 1px solid var(--border);
-  }
-  .tab-btn {
-    padding: 14px 20px; border: none; background: none;
-    font-family: var(--font); font-size: 13px; color: var(--text3);
-    cursor: pointer; border-bottom: 2px solid transparent;
-    margin-bottom: -1px; transition: all 0.15s;
-    display: flex; align-items: center; gap: 7px;
-  }
+  .tabs-bar { display: flex; padding: 0 2rem; background: var(--bg2); border-bottom: 1px solid var(--border); }
+  .tab-btn { padding: 14px 20px; border: none; background: none; font-family: var(--font); font-size: 13px; color: var(--text3); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.15s; display: flex; align-items: center; gap: 7px; }
   .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
   .tab-btn:hover:not(.active) { color: var(--text); }
 
-  /* LAYOUT */
   .main { padding: 1.5rem 2rem; }
-  .tab-pane { display: none; }
-  .tab-pane.active { display: block; }
+  .tab-pane { display: none; } .tab-pane.active { display: block; }
 
-  /* TOOLBAR */
   .toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 10px; }
   .toolbar-left { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .chip { display: inline-flex; align-items: center; gap: 5px; padding: 4px 11px; border-radius: 20px; font-size: 12px; font-weight: 500; }
-  .chip-total { background: var(--bg3); color: var(--text2); border: 1px solid var(--border); }
-  .chip-pending { background: var(--amber-bg); color: var(--amber); }
-  .chip-new { background: var(--blue-bg); color: var(--blue); }
-
-  .btn-primary {
-    display: flex; align-items: center; gap: 6px;
-    background: var(--accent); color: white; border: none;
-    border-radius: 8px; padding: 8px 16px; font-family: var(--font);
-    font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s;
-  }
+  .btn-primary { display: flex; align-items: center; gap: 6px; background: var(--accent); color: white; border: none; border-radius: 8px; padding: 8px 16px; font-family: var(--font); font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
   .btn-primary:hover { background: var(--accent2); box-shadow: 0 0 16px var(--accent-glow); }
 
-  /* TABLE */
   .table-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-  .table-scroll { overflow-x: auto; overflow-y: auto; max-height: calc(100vh - 220px); }
-  .table-scroll { overflow-x: auto; }
+  .table-scroll { overflow-x: auto; overflow-y: auto; max-height: calc(100vh - 240px); }
   table { width: 100%; border-collapse: collapse; min-width: 1200px; }
-  thead th {
-    position: sticky; top: 0; z-index: 10;
-    padding: 10px 13px; text-align: left; font-size: 11px; font-weight: 600;
-    color: var(--text3); text-transform: uppercase; letter-spacing: 0.6px;
-    background: var(--bg3); border-bottom: 1px solid var(--border); white-space: nowrap;
-    position: sticky; top: 0; z-index: 10;
-  }
-  .table-scroll { overflow: auto; max-height: calc(100vh - 240px); }
+  thead th { position: sticky; top: 0; z-index: 10; padding: 10px 13px; text-align: left; font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.6px; background: var(--bg3); border-bottom: 1px solid var(--border); white-space: nowrap; }
   tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
   tbody tr:last-child { border-bottom: none; }
   tbody tr:hover { background: var(--bg3); }
   tbody td { padding: 9px 13px; font-size: 13px; vertical-align: middle; }
 
-  .cell-name { font-weight: 500; }
-  .cell-id { font-family: var(--mono); font-size: 11px; color: var(--text3); }
+  .cell-name { font-weight: 500; } .cell-id { font-family: var(--mono); font-size: 11px; color: var(--text3); }
   .cell-muted { color: var(--text2); }
   .cell-trunc { max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
 
-  .rfp-link {
-    display: inline-flex; align-items: center; gap: 4px; color: var(--accent);
-    font-size: 12px; text-decoration: none; padding: 3px 8px; border-radius: 5px;
-    background: var(--accent-glow); border: 1px solid rgba(79,125,255,0.25); transition: all 0.15s;
-  }
+  .rfp-link { display: inline-flex; align-items: center; gap: 4px; color: var(--accent); font-size: 12px; text-decoration: none; padding: 3px 8px; border-radius: 5px; background: var(--accent-glow); border: 1px solid rgba(79,125,255,0.25); transition: all 0.15s; }
   .rfp-link:hover { background: rgba(79,125,255,0.25); }
 
-  .badge {
-    display: inline-flex; align-items: center; gap: 4px;
-    padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap;
-  }
+  .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
   .badge::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--dot, currentColor); }
-  .badge-new       { background: var(--blue-bg);   color: var(--blue); }
-  .badge-pending   { background: var(--amber-bg);  color: var(--amber); }
-  .badge-review    { background: var(--purple-bg); color: var(--purple); }
-  .badge-submitted { background: var(--green-bg);  color: var(--green); }
-  .badge-won       { background: rgba(34,197,122,0.2); color: #10b981; }
-  .badge-cancelled { background: var(--red-bg);    color: var(--red); }
-
-  .tech-name-cell {
-    font-size: 12px; color: var(--green);
-    display: flex; align-items: center; gap: 5px;
-  }
-  .tech-name-cell svg { width:11px; height:11px; opacity:0.7; }
 
   .actions { display: flex; gap: 5px; }
-  .btn-act {
-    display: flex; align-items: center; gap: 4px; padding: 4px 10px;
-    border-radius: 6px; font-family: var(--font); font-size: 11px; font-weight: 500;
-    cursor: pointer; border: 1px solid var(--border2); background: var(--bg3);
-    color: var(--text2); transition: all 0.12s;
-  }
+  .btn-act { display: flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 6px; font-family: var(--font); font-size: 11px; font-weight: 500; cursor: pointer; border: 1px solid var(--border2); background: var(--bg3); color: var(--text2); transition: all 0.12s; }
   .btn-act:hover { background: var(--bg4); color: var(--text); }
   .btn-act.tech { border-color: rgba(34,197,122,0.3); color: var(--green); background: var(--green-bg); }
   .btn-act.tech:hover { background: rgba(34,197,122,0.2); }
   .btn-act.hist { border-color: rgba(167,139,250,0.3); color: var(--purple); background: var(--purple-bg); }
 
-  /* MODAL */
   .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 200; align-items: center; justify-content: center; padding: 1rem; }
   .overlay.open { display: flex; }
-  .modal {
-    background: var(--bg2); border: 1px solid var(--border2);
-    border-radius: var(--radius-lg); padding: 1.5rem;
-    width: 700px; max-width: 100%; max-height: 90vh; overflow-y: auto;
-  }
-  .modal-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);
-  }
+  .modal { background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--radius-lg); padding: 1.5rem; width: 700px; max-width: 100%; max-height: 90vh; overflow-y: auto; }
+  .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
   .modal-title { font-size: 16px; font-weight: 500; }
-  .modal-close {
-    background: var(--bg3); border: 1px solid var(--border); border-radius: 6px;
-    width:28px; height:28px; display:flex; align-items:center; justify-content:center;
-    cursor:pointer; color:var(--text2);
-  }
+  .modal-close { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; width:28px; height:28px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text2); }
   .modal-close:hover { background: var(--bg4); color: var(--text); }
 
-  .section-divider {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 11px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.6px; margin: 1rem 0 12px;
-  }
+  .section-divider { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; margin: 1rem 0 12px; }
   .section-divider::after { content:''; flex:1; height:1px; background:var(--border); }
-  .section-divider.blue { color: var(--accent); }
-  .section-divider.green { color: var(--green); }
+  .section-divider.blue { color: var(--accent); } .section-divider.green { color: var(--green); }
 
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .fg-full { grid-column: 1 / -1; }
@@ -188,41 +90,20 @@
     padding: 8px 12px; font-family: var(--font); font-size: 13px; color: var(--text);
     outline: none; transition: border-color 0.15s; width: 100%;
   }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow);
-  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
   .form-group select { appearance: none; cursor: pointer; }
   .form-group textarea { resize: vertical; min-height: 68px; }
   .form-hint { font-size: 11px; color: var(--text3); margin-top: 2px; }
 
-  .tech-box {
-    background: rgba(34,197,122,0.04);
-    border: 1px solid rgba(34,197,122,0.2);
-    border-radius: var(--radius); padding: 14px; margin-top: 4px;
-  }
-  .tech-box .form-group input:focus, .tech-box .form-group select:focus, .tech-box .form-group textarea:focus {
-    border-color: var(--green); box-shadow: 0 0 0 3px rgba(34,197,122,0.12);
-  }
+  .tech-box { background: rgba(34,197,122,0.04); border: 1px solid rgba(34,197,122,0.2); border-radius: var(--radius); padding: 14px; margin-top: 4px; }
+  .tech-box .form-group input:focus, .tech-box .form-group select:focus, .tech-box .form-group textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(34,197,122,0.12); }
 
-  .modal-footer {
-    display: flex; justify-content: flex-end; gap: 8px;
-    margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border);
-  }
-  .btn-cancel {
-    padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border2);
-    background: transparent; color: var(--text2); font-family: var(--font);
-    font-size: 13px; cursor: pointer; transition: all 0.15s;
-  }
+  .modal-footer { display: flex; justify-content: flex-end; gap: 8px; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+  .btn-cancel { padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border2); background: transparent; color: var(--text2); font-family: var(--font); font-size: 13px; cursor: pointer; transition: all 0.15s; }
   .btn-cancel:hover { background: var(--bg3); color: var(--text); }
-  .btn-save {
-    padding: 8px 18px; border-radius: 8px; border: none;
-    background: var(--accent); color: white; font-family: var(--font);
-    font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s;
-    display: flex; align-items: center; gap: 6px;
-  }
+  .btn-save { padding: 8px 18px; border-radius: 8px; border: none; background: var(--accent); color: white; font-family: var(--font); font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 6px; }
   .btn-save:hover { background: var(--accent2); }
 
-  /* HISTORY */
   .hist-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
   .hist-item:last-child { border-bottom: none; }
   .hist-timeline { display: flex; flex-direction: column; align-items: center; gap: 0; padding-top: 3px; }
@@ -232,24 +113,18 @@
   .hist-line { flex:1; width:1px; background: var(--border); min-height: 20px; margin-top: 3px; }
   .hist-body { flex: 1; }
   .hist-meta { font-size:11px; color:var(--text3); display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:4px; }
-  .hist-role-tag {
-    font-size:10px; font-weight:700; padding:1px 6px; border-radius:4px; text-transform:uppercase;
-  }
+  .hist-role-tag { font-size:10px; font-weight:700; padding:1px 6px; border-radius:4px; text-transform:uppercase; }
   .hist-role-tag.presales { background: var(--accent-glow); color: var(--accent); }
   .hist-role-tag.tech { background: var(--green-bg); color: var(--green); }
-  .hist-text { font-size:13px; color:var(--text2); }
 
-  /* ANALYTICS */
   .stat-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 1.5rem; }
   .stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.1rem; }
-  .stat-card.hl { border-color: rgba(79,125,255,0.3); }
   .stat-lbl { font-size:11px; color:var(--text3); font-weight:600; text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px; }
   .stat-num { font-size:28px; font-weight:600; line-height:1; margin-bottom:3px; }
   .stat-sub { font-size:11px; color:var(--text3); }
 
   .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .chart-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
-  .chart-card.wide { grid-column: 1/-1; }
   .chart-title { font-size:12px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.5px; margin-bottom:14px; }
 
   .bar-row { display:flex; align-items:center; gap:10px; margin-bottom:9px; }
@@ -261,115 +136,53 @@
   .tl-row { display:flex; gap:10px; padding:8px 0; border-bottom:1px solid var(--border); font-size:12px; }
   .tl-row:last-child { border-bottom:none; }
   .tl-dot { width:7px; height:7px; border-radius:50%; margin-top:5px; flex-shrink:0; }
-  .tl-name { flex:1; color:var(--text); }
-  .tl-date { color:var(--text3); font-family:var(--mono); font-size:11px; }
+  .tl-name { flex:1; color:var(--text); } .tl-date { color:var(--text3); font-family:var(--mono); font-size:11px; }
 
-  /* SETTINGS BUTTON */
-  .btn-settings {
-    display:flex;align-items:center;gap:6px;
-    padding:6px 12px;border-radius:8px;
-    border:1px solid var(--border2);background:var(--bg3);
-    color:var(--text2);font-family:var(--font);font-size:12px;
-    cursor:pointer;transition:all .15s;margin-left:8px;
-  }
+  .btn-settings { display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;border:1px solid var(--border2);background:var(--bg3);color:var(--text2);font-family:var(--font);font-size:12px;cursor:pointer;transition:all .15s;margin-left:8px; }
   .btn-settings:hover{background:var(--bg4);color:var(--text);}
 
-  /* STATUS MANAGER */
   .status-list{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem;}
-  .status-item{
-    display:flex;align-items:center;gap:8px;
-    background:var(--bg3);border:1px solid var(--border);
-    border-radius:8px;padding:8px 10px;
-  }
+  .status-item{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 10px;}
   .status-color-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;cursor:pointer;border:2px solid rgba(255,255,255,0.15);}
   .status-color-input{opacity:0;position:absolute;width:0;height:0;}
-  .status-name-input{
-    flex:1;background:transparent;border:none;
-    font-family:var(--font);font-size:13px;color:var(--text);
-    outline:none;
-  }
-  .status-name-input:focus{color:var(--text);}
-  .status-type-sel{
-    font-family:var(--font);font-size:11px;padding:3px 6px;
-    background:var(--bg4);border:1px solid var(--border2);
-    border-radius:5px;color:var(--text2);cursor:pointer;
-  }
-  .status-del{
-    background:none;border:none;cursor:pointer;
-    color:var(--text3);padding:2px 5px;border-radius:4px;font-size:14px;line-height:1;
-  }
+  .status-name-input{flex:1;background:transparent;border:none;font-family:var(--font);font-size:13px;color:var(--text);outline:none;}
+  .status-type-sel{font-family:var(--font);font-size:11px;padding:3px 6px;background:var(--bg4);border:1px solid var(--border2);border-radius:5px;color:var(--text2);cursor:pointer;}
+  .status-del{background:none;border:none;cursor:pointer;color:var(--text3);padding:2px 5px;border-radius:4px;font-size:14px;line-height:1;}
   .status-del:hover{color:var(--red);background:var(--red-bg);}
-  .btn-add-status{
-    display:flex;align-items:center;gap:6px;width:100%;
-    background:var(--bg3);border:1px dashed var(--border2);
-    border-radius:8px;padding:8px 12px;color:var(--text2);
-    font-family:var(--font);font-size:12px;cursor:pointer;
-    transition:all .15s;margin-bottom:1rem;
-  }
+  .btn-add-status{display:flex;align-items:center;gap:6px;width:100%;background:var(--bg3);border:1px dashed var(--border2);border-radius:8px;padding:8px 12px;color:var(--text2);font-family:var(--font);font-size:12px;cursor:pointer;transition:all .15s;margin-bottom:1rem;}
   .btn-add-status:hover{border-color:var(--accent);color:var(--accent);}
   .settings-note{font-size:11px;color:var(--text3);line-height:1.5;padding:8px 10px;background:var(--bg3);border-radius:6px;border-left:2px solid var(--accent);}
 
   @keyframes spin { to { transform: rotate(360deg); } }
-  .form-group input.required-error,
-  .form-group input:invalid { border-color: var(--red) !important; }
-  /* FILTER BOX */
-  .filter-box {
-    display:flex; align-items:center; gap:7px;
-    background:var(--bg3); border:1px solid var(--border2);
-    border-radius:8px; padding:5px 10px;
-  }
-  .filter-box input {
-    background:none; border:none; outline:none;
-    font-family:var(--font); font-size:12px; color:var(--text);
-    width:200px;
-  }
+  .form-group input.required-error, .form-group input:invalid { border-color: var(--red) !important; }
+  
+  .filter-box { display:flex; align-items:center; gap:7px; background:var(--bg3); border:1px solid var(--border2); border-radius:8px; padding:5px 10px; }
+  .filter-box input { background:none; border:none; outline:none; font-family:var(--font); font-size:12px; color:var(--text); width:200px; }
   .filter-box input::placeholder { color:var(--text3); }
 
-  /* INLINE STATUS SELECT */
-  .status-select {
-    appearance: none;
-    border: none;
-    border-radius: 20px;
-    padding: 3px 24px 3px 9px;
-    font-family: var(--font);
-    font-size: 11px;
-    font-weight: 600;
-    cursor: pointer;
-    outline: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 6px center;
-    transition: opacity 0.15s;
-  }
+  .status-select { appearance: none; border: none; border-radius: 20px; padding: 3px 24px 3px 9px; font-family: var(--font); font-size: 11px; font-weight: 600; cursor: pointer; outline: none; transition: opacity 0.15s; }
   .status-select:hover { opacity: 0.85; }
-  .status-select:focus { box-shadow: 0 0 0 2px rgba(255,255,255,0.2); }
 
-  /* TOAST */
-  .toast {
-    position:fixed; bottom:1.5rem; right:1.5rem;
-    background:var(--bg4); border:1px solid var(--border2); border-radius:var(--radius);
-    padding:10px 16px; font-size:13px; color:var(--text);
-    display:flex; align-items:center; gap:8px; z-index:999;
-    opacity:0; transform:translateY(10px); transition:all .25s; pointer-events:none;
-  }
+  .toast { position:fixed; bottom:1.5rem; right:1.5rem; background:var(--bg4); border:1px solid var(--border2); border-radius:var(--radius); padding:10px 16px; font-size:13px; color:var(--text); display:flex; align-items:center; gap:8px; z-index:999; opacity:0; transform:translateY(10px); transition:all .25s; pointer-events:none; }
   .toast.show { opacity:1; transform:translateY(0); }
   .ti { width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
   .ti-ok  { background:var(--green-bg); color:var(--green); }
   .ti-err { background:var(--red-bg);   color:var(--red); }
+
+  .add-new-opt { color: var(--green); font-weight: 600; }
 </style>
 </head>
 <body>
 
 <header class="header">
   <div class="header-brand">
-    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wgARCADIAMgDASIAAhEBAxEB/8QAGwABAAIDAQEAAAAAAAAAAAAAAAYHBAUIAwH/xAAaAQEAAgMBAAAAAAAAAAAAAAAAAgMBBAUG/9oADAMBAAIQAxAAAAHqkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAw2MxHkoyFHt5jPqMSAAAAAAAAA+caXXzv0uZqfTryv+nwaCvXI+2UX8j8g8z7IiNeSXirfc4lLxXYAU/Ytle7FdgrGULOYOoZkojLg+0JHXPZ41ha+G+1updEAtOoeh5uybWxcrzft+erq11b5uytdssKyqHWRpM2WIp0pSViU3UTI55pLaoNJpHpcI5FLK0Ftfln52sjKKpUsr6A4l7h1uju8Ku223qcO9R2Dv6rQ0d8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8QAJxAAAgICAQMDBAMAAAAAAAAABQYDBAACAQcVFhAXQBETFHAgMTX/2gAIAQEAAQUC/cVm5BSj8iE55EKzyIVkUuk8fw/6x2Yu/l4x9qXTtdzO2XM6aX7lWb4fUZi7YOXQsh8qdKar9LywnnlhPPLCeBCvBajjKxwrVCuRcSsYQke4srZm0ZrfweHKdfnCk9TIr1RmS0x1r0+1WmvFJjA3DpCcoWSmUOuUb7UtEbPe1XAwcOdpl460N5Iqya+nUz/WLzXK48Y4lJzid+cyL20Za0abJdK2gFgnqM0kmsUYUuNJMHTUprDaF8GGcwwfUfwrMNmNmSxRUtDUOlg9ocVmtJkzHMEsOqJYJEfbo7nt0dyDpuakmL2IlsJQp7kLdWtpTr4yLsDJQgFOAqMMole90U4wPWRC6zg6xhTK2iMCgWkPNNK4SCiUgZTHEUzescVFu0FKHlMjuxjVIpEzCVBlARDUe/tzJ0+IcgyqacNV54vvwGeCQUl3O5nc7mb255eenS/yPH/EtDal7nx0VnjorOF8Xrz+9f/EAC0RAAIBAwEFBQkAAAAAAAAAAAECAwAEERIQEyExQQUUI1FhMDJQUmCRsdHh/9oACAEDAQE/AfiupfOsg8vZ3L6julq6vrWzl3Lkk+g/tR9t2cbahq+w/dRSpOgkTkaaQKcUHB2iRSxXYWAIXzrIzjZoljckDNNaJIxZoRk+ldsrAjpaW8Y19cfirC17nbLD5UcozHHOhvObetAMFPCotSqc0I5Ew1aGCZxxrS3DUD1oCQdK8ZfdqaLejga7o/zVDaiNtZ+jP//EACsRAAICAQIEAwkBAAAAAAAAAAECAAMRBBIQEyExFEFRIzAyUFJgYZGh4f/aAAgBAgEBPwH5rtb0hBHf3emTaOa0prvvTeoGJZodRYu04/f+R0atijdxFrLDMKEcTWwUMeAUkFvSYOM8N9ViAE4gtCjAt/s0BsYNfax2+U1V3iLTZBh1UZ7Qmvsv4hKlh1lu1mGIbK3ys3qXxnpNyddpHlCaz5z2LfFKbeUes8Wv0y3U8xdo+zP/xABAEAABAwICBQULCwUAAAAAAAABAgMEABEFEhMhIjFBFFFhk9EGECMzNDVCUnGBkRUgMkBicJKxssHhQ0SClPD/2gAIAQEABj8C++LPIfbYRuzOqCRXnOH/ALCe2vOcPr09tec4fXp7aS42tLiFblJNwfqqtGq8RjYa6edXvoLRGdWk7lJQSK8kf6s15I/1ZpzDn47wYX4RClINknj9U5Cyq0mSNdvRR/PbTURGpJ1uK9VPGmIsMBC7WSPVSK8cPwCvHD8Arxw/AKS7qDg1LSOfvadxOkcUcrbY9I0JDMaNFZVrSF8R76XHxXDxbIVIeZ3E8xp1yVAXAUheUJXfX8fmx40MNqfUM684vYcP3qNMR/VTcjmPEfH5kpcoNgtrAGjFqfeQ0X1toKg2nerooSJERUJzMRo1fn3pMiSCl0rtkPodFL02mVMdO2Uo3DgKL73K855k1/efCuVRhI0WYp29VLbiX0SNVyb3NPyDqaVsAc572D6XyfXe+7eL0tzD2USJAtlbWbAivkydDaiuaNSjl3jZuONTG3MTktPB/ZfCyVDVu9lfJ2F47LnlPjXsxShHvuahsP8AdE5hpQ3tBpBK3T6xtUSIxi7mLwn9RLyVAg/5UpazlQkXJPCsTxHFn0tocSWmm1g/ROr9P51NwnSh1sKLjC/W4H9jWJxU4s/GjNOEkgkkazYCokWT3VOQy01ZWRtRWs3+kbH2U3h4xRWLQngbOuAgg5SeOvhUpEHEDAjpIK1J3qV7qxXCJ0kvuIjOLaevcpUEZgb+ym3JWNqw9wyFAyFDOtQ5hxph6D3QO4ujN4Rp5Cx+quW4chKi541sqy6+evJUdantryVPWp7aQlxlDSCdpekSbCmocXYVl0bfQOJpthH0lnfzU2y2LIQLDvcndOjWk5m3B6JoR48yPIYTqQV67D3ilYrikppb5QU5Wx9m3RUuCy+y3IfeuSlZtktrF7VoIa8PbSTcneT7TaoeKMriuzENJS626NjNbhUDEpS4fglbbbCcuUfDXT0WCUB13ZJWbbPGmGpENmQ+lO24Re5qBiGDIZjho+FbvlB/4XrFZEgt5JK7oyG/E9tKxWByV/OAC1KFwNVqiYpKMSyQc6I4yhOyRzdNKcgymEOOals3v7DrFYjNxGQh3EJDDjaNeoFSbXNQmg4xyuM6teRRuhQNujopGmThzCmzqbYTlv77U40SpIWkpuk2Ip6I9KfzIOo6Q7Q4GvK3+sNeVv8AWGrrecWftKNcvkA8pkjZzeij+ez6qDJisyCNxdbCrfGvNkPqE9lebIfUJ7KuMNiA8+gT2fft/8QAKBABAAEEAAUDBQEBAAAAAAAAAREAITFBUWFxgcEQofAgQJGx0XDx/9oACAEBAAE/If8AYizu5EcJfotfkwwik4HJPtFAqwG2myABr+h7BWRFQjvFfE/FfM/FF+5GB4Slh/Zz+0jJZDV8K/pScxUXTl4OaURTmPJbY9vzXy/xXy/xRNn+fCu1g8/h9CipooepoNtC7GGB0MJf1UaqbxFwlBdYrU6ojGbBtj6UBpn+3JmPwqOABF0+wE9WxUz17RCTeVrLzh9CQdaXbLluGkgx/PRrAloFjtiKbLxToGFnv35VKpMG0W7+ljZRcZyZqabc8+k5VPZMcBMz2x3fSMu/4HxFT23XQrxc1zpAuSFnHuGqZ49GDHinomjX5EP9qP8Ak0SkBYOFzIWfenyWPBTbYSBswzQLUscC60m3VBhdRiBHdUW4kwBsTxLHWrdVPoUZIM7i1AJkubm2LQvwndQVmxpyE4RMXp6mQpEYCxxzq+9/BECvDxYafSJIU1OyYpbowZOks3uQlQ5XYOjm1zPPr6xpwWSicZMDLQZyRDOx5+Wtb45G3sVYrQefSQOAOXpbHZR+hkBaDN2lrIDCEyjMAIHU0IWhYreQF/VJpJMK+OTU9GjaKFCQl+UZoJdGSI3I2Xc1DsV+DsOcd2gPVz7u34TjlUH2SoE3iByg9qaAvFUT3tbCpCycghtE4A6aETJxdQGWF6VZMqBDkE3aDVJkkkyOFoCxV1WDEO+3DEM0k5AzG1Hso2FBfIiR01wVprpL7K+R+a+A+aOBFpVSVAEMs55faj+zCGOUPUMGImjIBSmP91//2gAMAwEAAgADAAAAEPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP8APvzzzzzzzzzyMfj/ALw8868358IEPXsbElhvlsAPvI888888888888888888888888888888888888888888888888888888888888888888888888888//EACYRAQABAwEIAgMAAAAAAAAAAAERACExQRBRYXGBkaHwMFBgscH/2gAIAQMBAT8Q+0UCWuE70Zifjc+p/CmgqEwILpcXoJQLHycj75qGRXcE06EIu8dNpJbmxSZlHSkhr2XNW+J60wckq5rq0YYokCZcDnl6caOblF3i3Y4TihPCRuZLRQSAp3RBGNajJyxZmA4Xl71Z5tg6c391MYKN4yzntRIkpvdxO4SidIBwzCEaz5oaZJDAukkTfMUjIWPd6vmlCwleiasFXl+Gf//EACYRAQACAgAEBgMBAAAAAAAAAAEAESExQVFhkRBxgaGx8DBQYMH/2gAIAQIBAT8Q/aArROs7TSK/Gb+h/rDRy1ai9cDEAZ9UGzSUy2UDmtQ1bEOScfEmsPgJNU94M+HwwaOV16Qm4DRFZUui8Da/HeYWodeRgirgb4dNtwAoD2XbdXLyNF0lWvXFHbEz0Z2+vkfEqNQTF6K13jgQBjBuuaMSABTbVi3wr2i1UGy0ONN1jVwqFl/eQHtBSljPqqPT0cf4z//EACYQAQEAAwABAwMEAwAAAAAAAAERACExQRBRYUBxgXCRobEg0fD/2gAIAQEAAT8Q/WI8iQ1rlIX49KQvPQ175mLJsQifJ9IZY1UgHu4iMg58v7gE/k3D8fQZsoEOx9HCXTwAWDXoVADif2P6TjoJG18JVPwcIZpd1dtPy7KdB5wJ3KJSGqKyLbF09TZsQUQ8dmGALeIPyDuET7pWPo8aw+XWwxbgyhFTBNDds30KeUroRwQeCYlNjFp7JG0bKmS1mDbGmSmvIf4NbXwKoAgUjeB98KJyOg/8ga9VR9i5tj8MPAqidxY3TbvonaJoXeh5l5EpphNwKmzq6el4TPFMo8kfcK7XNHhzv0aKnUwrG4zRBHERCC5o8ffznx/tf7yPAFVZ6ERN9FLTomF0juwVsho6PeXzlYYnyw/E7f1PpP8AhXO7+fOUfgQFoUpCLPsNerM0GtQg/fHZllKVpKVaAXeW5feKYol2FJXVMBtknhUNz2orszJIVdCwFM0QIl4+bKIEofYBct8eIqTcAfutg8pMwoohIFBN53DqiKAOVoFANNGGAXqkOoj2kpt1Vkl0xgFCwKSSK7xki6cAxRA3Q2afD3XWzPtQLLQJN2lvg2aYJoqoE45DjYkFGVCCKomTktep0PC0RRi7qeiBQQU2gybbArDuGsoFqG8eSrfN/Dmmukig7f4Bfxk0L+Yzq91ar5V9NfFizZdiLVC62IIaVBS2qCYQoCQ1ji/eg7KL8BU+bknp9IOxANBuhdpjUWe4BioNHgOYm2pzw8puCJANulGirEuiBmyqaKnLmepS0iUQapzDaOotVFRQkoNDWFaQGXC2DyrRF3hKcmh3JRxoru4Ce0miCAkREFfGP7LJRLYtRTe9AWLOIPOxXXGITbUGdvWhByEQVCM4AjDfBsBUITVAhdYFTjcIi5yEqbXSFXyNYDIWwtE4hjhrgxVv2RB+Gjscr6AiGziGoe1XmPAGsbQd8UD+DhH6VdXrsFiSH29Xz49PlYHETRwAAEDQH66//9k=" alt="Giza Arabia" style="height:42px;width:42px;object-fit:contain;border-radius:50%;background:#ffffff;padding:4px;flex-shrink:0;">
     <div style="margin-left:4px">
       <div class="header-title">Pulse by Solutions</div>
       <div class="header-sub">Pre-Sales &amp; Technical Workflow</div>
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:10px">
-    <div id="userPickerWrap" style="display:flex;align-items:center;gap:7px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 12px;cursor:pointer" onclick="openUserPicker()">
+    <div id="userPickerWrap" style="display:flex;align-items:center;gap:7px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px 12px;cursor:pointer" onclick="openUserPicker()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;color:var(--accent);flex-shrink:0"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg>
       <span id="loggedInLabel" style="font-size:13px;color:var(--text);white-space:nowrap">— Select User —</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px;color:var(--text3)"><polyline points="6 9 12 15 18 9"/></svg>
@@ -381,438 +194,194 @@
   </div>
 </header>
 
-<!-- ── USER PICKER MODAL ── -->
 <div id="userPickerOverlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);align-items:center;justify-content:center">
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;width:320px;max-width:90vw">
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px;width:320px;max-width:90vw">
     <div style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;color:var(--accent)"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg>
       Who are you?
     </div>
     <div id="userPickerList" style="display:flex;flex-direction:column;gap:6px;max-height:320px;overflow-y:auto"></div>
-    <button onclick="closeUserPicker()" style="margin-top:16px;width:100%;padding:8px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text3);cursor:pointer;font-size:13px">Cancel</button>
+    <button onclick="closeUserPicker()" style="margin-top:16px;width:100%;padding:8px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text3);cursor:pointer;font-size:13px">Cancel</button>
   </div>
 </div>
 
 <div class="tabs-bar">
   <button class="tab-btn active" data-tab="presales" onclick="switchTab('presales')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg>
-    Pre-Sales
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg> Pre-Sales
   </button>
   <button class="tab-btn" data-tab="technical" onclick="switchTab('technical')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-    Technical
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Technical
   </button>
   <button class="tab-btn" data-tab="analytics" onclick="switchTab('analytics')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-    Analytics
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Analytics
   </button>
 </div>
 
 <div class="main">
-
-  <!-- ── TAB 1: Pre-Sales ── -->
+  <!-- TAB 1 -->
   <div id="pane-presales" class="tab-pane active">
     <div class="toolbar">
       <div class="toolbar-left" id="psFilterRow"></div>
       <button class="btn-primary" id="addBtn" onclick="openAdd()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        Add Opportunity
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Opportunity
       </button>
     </div>
-    <div class="table-wrap">
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th>Opp Name</th>
-              <th>Opp ID</th>
-              <th>Subject</th>
-              <th>RFP Files</th>
-              <th>Pre-Sales Name</th>
-              <th>Submit Date</th>
-              <th>Init Date</th>
-              <th>Clarif. Date</th>
-              <th>Status</th>
-              <th>Dependency</th>
-              <th>Dependency Person</th>
-              <th>Final Feedback</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="oppBodyPresales"></tbody>
-        </table>
-      </div>
-    </div>
+    <div class="table-wrap"><div class="table-scroll"><table>
+      <thead><tr><th>Opp Name</th><th>Opp ID</th><th>Subject</th><th>RFP Files</th><th>Pre-Sales Name</th><th>Submit Date</th><th>Init Date</th><th>Clarif. Date</th><th>Status</th><th>Dependency</th><th>Dependency Person</th><th>Final Feedback</th><th>Actions</th></tr></thead>
+      <tbody id="oppBodyPresales"></tbody>
+    </table></div></div>
   </div>
 
-  <!-- ── TAB 2: Technical ── -->
+  <!-- TAB 2 -->
   <div id="pane-technical" class="tab-pane">
-    <div class="toolbar">
-      <div class="toolbar-left" id="techFilterRow"></div>
-    </div>
-    <div class="table-wrap">
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th>Opp Name</th>
-              <th>Opp ID</th>
-              <th>Subject</th>
-              <th>RFP Files</th>
-              <th>Pre-Sales Name</th>
-              <th>Submit Date</th>
-              <th>Clarif. Date</th>
-              <th>Status</th>
-              <th>Technical Name</th>
-              <th>Comments</th>
-              <th>Dependency</th>
-              <th>Dependency Person</th>
-              <th>Final Feedback</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="oppBodyTech"></tbody>
-        </table>
-      </div>
-    </div>
+    <div class="toolbar"><div class="toolbar-left" id="techFilterRow"></div></div>
+    <div class="table-wrap"><div class="table-scroll"><table>
+      <thead><tr><th>Opp Name</th><th>Opp ID</th><th>Subject</th><th>RFP Files</th><th>Pre-Sales Name</th><th>Submit Date</th><th>Clarif. Date</th><th>Status</th><th>Technical Name</th><th>Comments</th><th>Dependency</th><th>Dependency Person</th><th>Final Feedback</th><th>Actions</th></tr></thead>
+      <tbody id="oppBodyTech"></tbody>
+    </table></div></div>
   </div>
 
-  <!-- ── TAB 3: Analytics ── -->
+  <!-- TAB 3 -->
   <div id="pane-analytics" class="tab-pane">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px;">
       <span id="analyticsSource" style="font-size:11px;color:var(--text3);font-family:var(--mono)">Waiting for data...</span>
       <button onclick="renderAnalytics()" style="display:flex;align-items:center;gap:5px;background:var(--bg3);border:1px solid var(--border2);border-radius:7px;padding:5px 12px;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0115-6.7L21 8M3 22v-6h6"/><path d="M21 12a9 9 0 01-15 6.7L3 16"/></svg>
-        Refresh from Sheet
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0115-6.7L21 8M3 22v-6h6"/><path d="M21 12a9 9 0 01-15 6.7L3 16"/></svg> Refresh
       </button>
     </div>
     <div class="stat-grid" id="statGrid"></div>
     <div class="charts-grid">
-      <div class="chart-card">
-        <div class="chart-title">Status Breakdown</div>
-        <div id="cStatus"></div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">Upcoming Submission Deadlines</div>
-        <div id="cDeadline"></div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">Opportunities by Sales Member</div>
-        <div id="cSales"></div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">Opportunities by Technical Reviewer</div>
-        <div id="cTech"></div>
-      </div>
-    </div>
-  </div>
-
-</div><!-- /main -->
-
-
-<!-- ══ MODAL: Add / Edit ══ -->
-<div class="overlay" id="mainOverlay">
-  <div class="modal">
-    <div class="modal-header">
-      <div class="modal-title" id="mTitle">Add New Opportunity</div>
-      <button class="modal-close" onclick="closeModal('mainOverlay')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-
-    <!-- Pre-Sales fields -->
-    <div id="secPresales">
-      <div class="section-divider blue">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg>
-        Pre-Sales Information
-      </div>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Opportunity Name *</label>
-          <input type="text" id="f_opp_name" placeholder="e.g. Ministry ERP Project">
-        </div>
-        <div class="form-group">
-          <label>Opportunity ID *</label>
-          <input type="text" id="f_opp_id" placeholder="e.g. OPP-2025-041">
-        </div>
-        <div class="form-group fg-full">
-          <label>Subject</label>
-          <input type="text" id="f_subject" placeholder="e.g. ERP Implementation Proposal — Q3 2025">
-          <span class="form-hint">Brief subject line for the RFP — used in email notifications</span>
-        </div>
-        <div class="form-group fg-full">
-          <label>RFP Files — SharePoint Link</label>
-          <input type="url" id="f_rfp_link" placeholder="https://company.sharepoint.com/sites/rfp/...">
-          <span class="form-hint">Paste the SharePoint folder URL — technical team will access files directly</span>
-        </div>
-        <div class="form-group">
-          <label>Pre-Sales Name</label>
-<select id="f_sales_name"><option value="">— Select —</option><option value="Ahmed Kamel">Ahmed Kamel</option><option value="Sara Nasser">Sara Nasser</option><option value="Mona Hassan">Mona Hassan</option><option value="Rania Saleh">Rania Saleh</option></select>
-        </div>
-        <div class="form-group">
-          <label>Submission Date</label>
-          <input type="date" id="f_submit_date">
-        </div>
-        <div class="form-group">
-          <label>Init Date <span id="init_date_note" style="font-size:10px;color:var(--text3);font-weight:400"></span></label>
-          <input type="date" id="f_init_date" readonly style="opacity:0.5;cursor:not-allowed;background:var(--bg3);border-color:var(--border)" title="Auto-set on creation — cannot be changed">
-        </div>
-        <div class="form-group">
-          <label>Clarification Date</label>
-          <input type="date" id="f_clarif_date">
-        </div>
-        <div class="form-group">
-          <label>Dependency — Team</label>
-          <select id="f_dependency" onchange="onDepChange('f_dependency','f_dep_person')" style="appearance:none;cursor:pointer">
-            <option value="">— Select Team —</option>
-            <option value="Sales Team">Sales Team</option>
-            <option value="Pre-Sales Team">Pre-Sales Team</option>
-            <option value="Technical Team">Technical Team</option>
-            <option value="Management Team">Management Team</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Dependency — Person</label>
-          <select id="f_dep_person" style="appearance:none;cursor:pointer">
-            <option value="">— Select Team first —</option>
-          </select>
-        </div>
-        <div class="form-group fg-full">
-          <label>Final Feedback</label>
-          <textarea id="f_feedback" placeholder="Client feedback or pre-submission notes..."></textarea>
-        </div>
-      </div>
-    </div>
-
-    <!-- Technical fields -->
-    <div id="secTech">
-      <input type="hidden" id="f_hidden_opp_id">
-      <div class="section-divider green">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        Technical Team — Review
-      </div>
-      <div class="tech-box">
-        <div class="form-grid">
-          <div class="form-group">
-            <label>Status</label>
-            <select id="f_status"></select>
-          </div>
-          <div class="form-group">
-            <label>Technical Reviewer Name</label>
-<select id="f_tech_name"><option value="">— Select —</option><option value="Khaled Mostafa">Khaled Mostafa</option><option value="Omar Fathy">Omar Fathy</option><option value="Mohamed Ali">Mohamed Ali</option><option value="Tarek Hassan">Tarek Hassan</option></select>
-          </div>
-          <div class="form-group fg-full">
-            <label>Technical Comments</label>
-            <textarea id="f_comments" placeholder="Technical notes, risk flags, clarification requests, revision reasons..."></textarea>
-          </div>
-          <div class="form-group">
-            <label>Dependency — Team</label>
-            <select id="f_tech_dependency" onchange="onDepChange('f_tech_dependency','f_tech_dep_person')" style="appearance:none;cursor:pointer">
-              <option value="">— Select Team —</option>
-              <option value="Sales Team">Sales Team</option>
-              <option value="Pre-Sales Team">Pre-Sales Team</option>
-              <option value="Technical Team">Technical Team</option>
-              <option value="Management Team">Management Team</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Dependency — Person</label>
-            <select id="f_tech_dep_person" style="appearance:none;cursor:pointer">
-              <option value="">— Select Team first —</option>
-            </select>
-          </div>
-          <div class="form-group fg-full" id="finalFeedbackGroup">
-            <label>Final Feedback <span style="font-size:10px;color:var(--text3);font-weight:400">(available when status is Submitted, Won, or Cancelled)</span></label>
-            <textarea id="f_feedback_tech" placeholder="Final client feedback or outcome notes..." style="min-height:68px"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-footer">
-      <button class="btn-cancel" onclick="closeModal('mainOverlay')">Cancel</button>
-      <button class="btn-save" onclick="saveOpp()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
-        Save &amp; Trigger Workflow
-      </button>
+      <div class="chart-card"><div class="chart-title">Status Breakdown</div><div id="cStatus"></div></div>
+      <div class="chart-card"><div class="chart-title">Upcoming Submission Deadlines</div><div id="cDeadline"></div></div>
+      <div class="chart-card"><div class="chart-title">Opportunities by Pre-Sales Member</div><div id="cSales"></div></div>
+      <div class="chart-card"><div class="chart-title">Opportunities by Technical Reviewer</div><div id="cTech"></div></div>
     </div>
   </div>
 </div>
 
+<!-- MODAL: Add/Edit -->
+<div class="overlay" id="mainOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="mTitle">Add New Opportunity</div>
+      <button class="modal-close" onclick="closeModal('mainOverlay')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
 
-<!-- ══ MODAL: Pre-Sales Update (Status + Comments only) ══ -->
+    <div id="secPresales">
+      <div class="section-divider blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg> Pre-Sales Information</div>
+      <div class="form-grid">
+        <div class="form-group"><label>Opportunity Name *</label><input type="text" id="f_opp_name" placeholder="e.g. Ministry ERP Project"></div>
+        <div class="form-group"><label>Opportunity ID *</label><input type="text" id="f_opp_id" placeholder="e.g. OPP-2025-041"></div>
+        <div class="form-group fg-full"><label>Subject</label><input type="text" id="f_subject" placeholder="e.g. ERP Implementation Proposal — Q3 2025"></div>
+        <div class="form-group fg-full"><label>RFP Files — SharePoint Link</label><input type="url" id="f_rfp_link" placeholder="https://company.sharepoint.com/sites/rfp/..."></div>
+        <div class="form-group"><label>Pre-Sales Name</label><select id="f_sales_name" onchange="handlePersonSelect(this, 'Pre-Sales Team')"></select></div>
+        <div class="form-group"><label>Submission Date</label><input type="date" id="f_submit_date"></div>
+        <div class="form-group"><label>Init Date</label><input type="date" id="f_init_date" readonly style="opacity:0.5;cursor:not-allowed;background:var(--bg3);border-color:var(--border)"></div>
+        <div class="form-group"><label>Clarification Date</label><input type="date" id="f_clarif_date"></div>
+        <div class="form-group"><label>Dependency — Team</label><select id="f_dependency" onchange="onDepChange('f_dependency','f_dep_person')" style="appearance:none;cursor:pointer"><option value="">— Select Team —</option><option value="Pre-Sales Team">Pre-Sales Team</option><option value="Technical Team">Technical Team</option><option value="Management Team">Management Team</option></select></div>
+        <div class="form-group"><label>Dependency — Person</label><select id="f_dep_person" onchange="handlePersonSelect(this, null, 'f_dependency')" disabled style="appearance:none;cursor:pointer"></select></div>
+        <div class="form-group fg-full"><label>Final Feedback</label><textarea id="f_feedback" placeholder="Client feedback or pre-submission notes..."></textarea></div>
+      </div>
+    </div>
+
+    <div id="secTech">
+      <input type="hidden" id="f_hidden_opp_id">
+      <div class="section-divider green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Technical Team — Review</div>
+      <div class="tech-box"><div class="form-grid">
+        <div class="form-group"><label>Status</label><select id="f_status"></select></div>
+        <div class="form-group"><label>Technical Reviewer Name</label><select id="f_tech_name" onchange="handlePersonSelect(this, 'Technical Team')"></select></div>
+        <div class="form-group fg-full"><label>Technical Comments</label><textarea id="f_comments" placeholder="Technical notes..."></textarea></div>
+        <div class="form-group"><label>Dependency — Team</label><select id="f_tech_dependency" onchange="onDepChange('f_tech_dependency','f_tech_dep_person')" style="appearance:none;cursor:pointer"><option value="">— Select Team —</option><option value="Pre-Sales Team">Pre-Sales Team</option><option value="Technical Team">Technical Team</option><option value="Management Team">Management Team</option></select></div>
+        <div class="form-group"><label>Dependency — Person</label><select id="f_tech_dep_person" onchange="handlePersonSelect(this, null, 'f_tech_dependency')" disabled style="appearance:none;cursor:pointer"></select></div>
+        <div class="form-group fg-full" id="finalFeedbackGroup"><label>Final Feedback</label><textarea id="f_feedback_tech" placeholder="Final client feedback or outcome notes..." style="min-height:68px"></textarea></div>
+      </div></div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal('mainOverlay')">Cancel</button>
+      <button class="btn-save" onclick="saveOpp()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg> Save &amp; Trigger Workflow</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Pre-Sales Update -->
 <div class="overlay" id="psUpdateOverlay">
   <div class="modal" style="max-width:580px">
     <div class="modal-header">
       <div class="modal-title" id="psUpdateTitle">Update Opportunity</div>
-      <button class="modal-close" onclick="closeModal('psUpdateOverlay')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+      <button class="modal-close" onclick="closeModal('psUpdateOverlay')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-
-    <div class="section-divider blue" style="margin-top:0">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg>
-      Pre-Sales Update
-    </div>
-
+    <div class="section-divider blue" style="margin-top:0">Pre-Sales Update</div>
     <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px;margin-bottom:1rem;">
       <div style="font-size:11px;color:var(--text3);margin-bottom:2px">Opportunity</div>
       <div id="psUpdateOppName" style="font-size:14px;font-weight:500;color:var(--text)"></div>
       <div id="psUpdateOppId" style="font-size:11px;color:var(--text3);font-family:var(--mono);margin-top:2px"></div>
     </div>
-
     <div class="form-grid">
-      <div class="form-group">
-        <label>Status</label>
-        <select id="ps_status"></select>
-      </div>
-      <div class="form-group">
-        <label>Dependency — Team</label>
-        <select id="ps_dependency" onchange="onDepChange('ps_dependency','ps_dep_person')" style="appearance:none;cursor:pointer">
-          <option value="">— Select Team —</option>
-          <option value="Sales Team">Sales Team</option>
-          <option value="Pre-Sales Team">Pre-Sales Team</option>
-          <option value="Technical Team">Technical Team</option>
-          <option value="Management Team">Management Team</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Dependency — Person</label>
-        <select id="ps_dep_person" style="appearance:none;cursor:pointer">
-          <option value="">— Select Team first —</option>
-        </select>
-      </div>
-      <div class="form-group fg-full">
-        <label>RFP Files — SharePoint Link</label>
-        <input type="url" id="ps_rfp_link" placeholder="https://company.sharepoint.com/...">
-      </div>
-      <div class="form-group">
-        <label>Pre-Sales Name</label>
-<select id="ps_sales_name"><option value="">— Select —</option><option value="Ahmed Kamel">Ahmed Kamel</option><option value="Sara Nasser">Sara Nasser</option><option value="Mona Hassan">Mona Hassan</option><option value="Rania Saleh">Rania Saleh</option></select>
-      </div>
-      <div class="form-group">
-        <label>Submit Date</label>
-        <input type="date" id="ps_submit_date">
-      </div>
-      <div class="form-group">
-        <label>Clarification Date</label>
-        <input type="date" id="ps_clarif_date">
-      </div>
-      <div class="form-group fg-full">
-        <label>Pre-Sales Comments</label>
-        <textarea id="ps_comments" placeholder="Internal notes, client updates, follow-up actions..." style="min-height:80px"></textarea>
-      </div>
+      <div class="form-group"><label>Status</label><select id="ps_status"></select></div>
+      <div class="form-group"><label>Dependency — Team</label><select id="ps_dependency" onchange="onDepChange('ps_dependency','ps_dep_person')" style="appearance:none;cursor:pointer"><option value="">— Select Team —</option><option value="Pre-Sales Team">Pre-Sales Team</option><option value="Technical Team">Technical Team</option><option value="Management Team">Management Team</option></select></div>
+      <div class="form-group"><label>Dependency — Person</label><select id="ps_dep_person" onchange="handlePersonSelect(this, null, 'ps_dependency')" disabled style="appearance:none;cursor:pointer"></select></div>
+      <div class="form-group fg-full"><label>RFP Files — SharePoint Link</label><input type="url" id="ps_rfp_link" placeholder="https://company.sharepoint.com/..."></div>
+      <div class="form-group"><label>Pre-Sales Name</label><select id="ps_sales_name" onchange="handlePersonSelect(this, 'Pre-Sales Team')"></select></div>
+      <div class="form-group"><label>Submit Date</label><input type="date" id="ps_submit_date"></div>
+      <div class="form-group"><label>Clarification Date</label><input type="date" id="ps_clarif_date"></div>
+      <div class="form-group fg-full"><label>Pre-Sales Comments</label><textarea id="ps_comments" placeholder="Internal notes..." style="min-height:80px"></textarea></div>
     </div>
-
     <div class="modal-footer">
       <button class="btn-cancel" onclick="closeModal('psUpdateOverlay')">Cancel</button>
-      <button class="btn-save" onclick="savePsUpdate()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
-        Save &amp; Trigger Workflow
-      </button>
+      <button class="btn-save" onclick="savePsUpdate()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg> Save &amp; Trigger Workflow</button>
     </div>
   </div>
 </div>
 
-<!-- ══ MODAL: History ══ -->
+<!-- MODAL: History -->
 <div class="overlay" id="histOverlay">
   <div class="modal" style="max-width:560px">
     <div class="modal-header">
       <div class="modal-title" id="histTitle">Review History</div>
-      <button class="modal-close" onclick="closeModal('histOverlay')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+      <button class="modal-close" onclick="closeModal('histOverlay')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <div id="histBody"></div>
   </div>
 </div>
 
-
-<!-- ══ MODAL: Settings — Status Manager ══ -->
+<!-- MODAL: Settings -->
 <div class="overlay" id="settingsOverlay">
   <div class="modal" style="max-width:540px">
     <div class="modal-header">
       <div class="modal-title">⚙️ Manage Status Options</div>
-      <button class="modal-close" onclick="closeModal('settingsOverlay')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+      <button class="modal-close" onclick="closeModal('settingsOverlay')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;">Add, rename, reorder or remove status options. Click the color dot to change color. Both roles see the same dropdown.</p>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;">Add, rename, reorder or remove status options.</p>
     <div class="status-list" id="statusList"></div>
-    <button class="btn-add-status" onclick="addStatusItem()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      Add New Status
-    </button>
-
-    <div class="settings-note" style="margin-top:1rem;">
-      <strong style="color:var(--text)">n8n Action:</strong>&nbsp;
-      <strong>notify_tech</strong> — email Tech &nbsp;|&nbsp;
-      <strong>notify_presales</strong> — email Pre-Sales &nbsp;|&nbsp;
-      <strong>notify_mgmt</strong> — email Management &nbsp;|&nbsp;
-      <strong>update</strong> — sheet only
-    </div>
+    <button class="btn-add-status" onclick="addStatusItem()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add New Status</button>
     <div class="modal-footer">
       <button class="btn-cancel" onclick="closeModal('settingsOverlay')">Cancel</button>
-      <button class="btn-save" onclick="saveSettings()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
-        Save & Apply
-      </button>
+      <button class="btn-save" onclick="saveSettings()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg> Save & Apply</button>
     </div>
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast">
-  <div class="ti ti-ok" id="toastIcon">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:10px;height:10px"><polyline points="20 6 9 17 4 12"/></svg>
-  </div>
+  <div class="ti ti-ok" id="toastIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:10px;height:10px"><polyline points="20 6 9 17 4 12"/></svg></div>
   <span id="toastMsg">Saved!</span>
 </div>
 
-
 <script>
-// ─── CONFIG ────────────────────────────────────────────────
 const N8N_WEBHOOK         = 'https://1e68495d.kube-ops.com/webhook/rfp-workflow';
 const N8N_WEBHOOK_DATA    = 'https://1e68495d.kube-ops.com/webhook/rfp-data';
 const N8N_WEBHOOK_HISTORY = 'https://1e68495d.kube-ops.com/webhook/rfp-history';
-// Google Sheet: https://docs.google.com/spreadsheets/d/1r-QiW5aQAaLumScQOAEbgzL_xFJH4A7YKLjx7SOS1WE/edit
 
-// ─── DYNAMIC STATUS CONFIG ─────────────────────────────────
-// One shared list — both roles use the same dropdown
-// action tells n8n: notify_tech | notify_presales | notify_mgmt | update
 let statusConfig = [
-  { label:'New',            color:'#38bdf8', action:'notify_tech' },
-  { label:'Pending Review', color:'#f59e0b', action:'update' },
-  { label:'In Review',      color:'#a78bfa', action:'update' },
-  { label:'Needs Revision', color:'#f59e0b', action:'notify_presales' },
-  { label:'Resubmitted',    color:'#a78bfa', action:'notify_tech' },
-  { label:'Submitted',      color:'#22c57a', action:'notify_presales' },
-  { label:'Won',            color:'#10b981', action:'update' },
-  { label:'Cancelled',      color:'#ef4444', action:'update' },
+  { label:'New', color:'#38bdf8', action:'notify_tech' }, { label:'Pending Review', color:'#f59e0b', action:'update' },
+  { label:'In Review', color:'#a78bfa', action:'update' }, { label:'Needs Revision', color:'#f59e0b', action:'notify_presales' },
+  { label:'Resubmitted', color:'#a78bfa', action:'notify_tech' }, { label:'Submitted', color:'#22c57a', action:'notify_presales' },
+  { label:'Won', color:'#10b981', action:'update' }, { label:'Cancelled', color:'#ef4444', action:'update' },
 ];
 
-function getAllStatuses(){ return statusConfig; }
-
-let _debounceTimer = null;
-function debounce(fn, delay=300){
-  return function(...args){
-    clearTimeout(_debounceTimer);
-    _debounceTimer = setTimeout(()=>fn(...args), delay);
-  };
-}
-
-function getStatusColor(label){
-  const s = statusConfig.find(x=>x.label===label);
-  return s ? s.color : '#8b92a8';
-}
-function getStatusAction(label){
-  const s = statusConfig.find(x=>x.label===label);
-  return s ? s.action : 'update';
-}
-function getBadgeClass(label){
-  const c = getStatusColor(label);
-  return `custom-badge-${label.replace(/\s+/g,'_').replace(/[^a-zA-Z0-9_]/g,'')}`;
-}
+function getStatusColor(label){ const s = statusConfig.find(x=>x.label===label); return s ? s.color : '#8b92a8'; }
+function getStatusAction(label){ const s = statusConfig.find(x=>x.label===label); return s ? s.action : 'update'; }
+function getBadgeClass(label){ return `custom-badge-${label.replace(/\s+/g,'_').replace(/[^a-zA-Z0-9_]/g,'')}`; }
 
 function rebuildStatusStyles(){
   let existing = document.getElementById('dynamic-status-styles');
@@ -821,1076 +390,465 @@ function rebuildStatusStyles(){
   style.id = 'dynamic-status-styles';
   style.textContent = statusConfig.map(s=>{
     const cls = `custom-badge-${s.label.replace(/\s+/g,'_').replace(/[^a-zA-Z0-9_]/g,'')}`;
-    const hex = s.color;
-    // parse hex to rgb for background opacity
-    const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
-    return `.${cls}{background:rgba(${r},${g},${b},0.15);color:${hex};}`;
+    const r=parseInt(s.color.slice(1,3),16), g=parseInt(s.color.slice(3,5),16), b=parseInt(s.color.slice(5,7),16);
+    return `.${cls}{background:rgba(${r},${g},${b},0.15);color:${s.color};}`;
   }).join('\n');
   document.head.appendChild(style);
 }
 
 function rebuildStatusDropdown(){
-  // main modal select
   const sel = document.getElementById('f_status');
-  if(sel){
-    const cur = sel.value;
-    sel.innerHTML = statusConfig.map(s=>`<option value="${s.label}">${s.label}</option>`).join('');
-    if(statusConfig.find(x=>x.label===cur)) sel.value=cur;
-  }
-  // ps update modal select
+  if(sel){ const cur = sel.value; sel.innerHTML = statusConfig.map(s=>`<option value="${s.label}">${s.label}</option>`).join(''); if(statusConfig.find(x=>x.label===cur)) sel.value=cur; }
   const ps = document.getElementById('ps_status');
-  if(ps){
-    const cur = ps.value;
-    ps.innerHTML = statusConfig.map(s=>`<option value="${s.label}">${s.label}</option>`).join('');
-    if(statusConfig.find(x=>x.label===cur)) ps.value=cur;
-  }
+  if(ps){ const cur = ps.value; ps.innerHTML = statusConfig.map(s=>`<option value="${s.label}">${s.label}</option>`).join(''); if(statusConfig.find(x=>x.label===cur)) ps.value=cur; }
 }
 
-// ─── TEAM MEMBERS ──────────────────────────────────────────
-const TEAM_MEMBERS = {
-  'Sales Team':       ['Rania Saleh','Mona Hassan','Karim Adel','Nadia Omar'],
+let DEP_MEMBERS = {
   'Pre-Sales Team':   ['Ahmed Kamel','Sara Nasser','Mohamed Tarek','Layla Fares'],
   'Technical Team':   ['Khaled Mostafa','Omar Fathy','Dina Hani','Samy Farouk'],
-  'Management Team':  ['Ahmed El-Sayed','Hala Mahmoud','Wael Nour'],
+  'Management Team':  ['Ahmed El-Sayed','Hala Mahmoud','Wael Nour']
 };
-function getMembersForTeam(team){ return TEAM_MEMBERS[team] || []; }
-function buildMemberSelect(selectId, team, currentVal){
-  const members = getMembersForTeam(team);
-  const opts = `<option value="">— Select Person —</option>` +
-    members.map(m=>`<option value="${m}" ${m===currentVal?'selected':''}>${m}</option>`).join('');
-  const el = document.getElementById(selectId);
-  if(el){ el.innerHTML = opts; if(currentVal) el.value = currentVal; }
+
+function getAllMembers(){
+  const all = new Set();
+  Object.values(DEP_MEMBERS).forEach(arr => { if(Array.isArray(arr)) arr.forEach(m => all.add(m)); });
+  return [...all].sort();
 }
 
-// ─── STATE ─────────────────────────────────────────────────
+function populateSelect(selectId, membersArray, currentVal = '') {
+  const sel = document.getElementById(selectId);
+  if(!sel) return;
+  let opts = '<option value="">— Select Person —</option>';
+  opts += membersArray.map(m => `<option value="${m}">${m}</option>`).join('');
+  opts += '<option value="__add_new__" class="add-new-opt">➕ Add New Person...</option>';
+  sel.innerHTML = opts;
+  if(currentVal) {
+    if(membersArray.includes(currentVal)) { sel.value = currentVal; } 
+    else {
+      let customOpt = document.createElement('option');
+      customOpt.value = currentVal; customOpt.text = currentVal;
+      sel.insertBefore(customOpt, sel.lastElementChild);
+      sel.value = currentVal;
+    }
+  }
+}
+
+function handlePersonSelect(selectEl, fixedTeam, teamSelectId) {
+  if (selectEl.value === '__add_new__') {
+    const input = document.createElement('input');
+    input.type = 'text'; input.id = selectEl.id; input.className = selectEl.className;
+    input.style.cssText = selectEl.style.cssText; input.placeholder = 'Type new name & press Enter';
+    selectEl.parentNode.replaceChild(input, selectEl);
+    input.focus();
+    input.addEventListener('blur', function() { commitNewPerson(input, fixedTeam, teamSelectId); });
+    input.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); commitNewPerson(input, fixedTeam, teamSelectId); } });
+  }
+}
+
+function commitNewPerson(inputEl, fixedTeam, teamSelectId) {
+  const newName = inputEl.value.trim();
+  const selectId = inputEl.id;
+  if (!newName) { revertToSelect(selectId, fixedTeam, teamSelectId, ''); return; }
+  let team = fixedTeam;
+  if (!team && teamSelectId) { team = document.getElementById(teamSelectId)?.value; }
+  if (team && DEP_MEMBERS[team]) { if (!DEP_MEMBERS[team].includes(newName)) { DEP_MEMBERS[team].push(newName); DEP_MEMBERS[team].sort(); } }
+  revertToSelect(selectId, fixedTeam, teamSelectId, newName);
+  showToast(`✓ ${newName} added to ${team || 'list'}`);
+}
+
+function revertToSelect(selectId, fixedTeam, teamSelectId, currentVal) {
+  let team = fixedTeam;
+  if (!team && teamSelectId) { team = document.getElementById(teamSelectId)?.value; }
+  const members = team ? (DEP_MEMBERS[team] || []) : getAllMembers();
+  const newSel = document.createElement('select');
+  newSel.id = selectId; newSel.className = 'form-group';
+  newSel.setAttribute('style', 'appearance:none;cursor:pointer;width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:8px 12px;font-family:var(--font);font-size:13px;color:var(--text);outline:none;');
+  const oldEl = document.getElementById(selectId);
+  if(oldEl) oldEl.parentNode.replaceChild(newSel, oldEl);
+  if (fixedTeam) { newSel.onchange = function() { handlePersonSelect(this, fixedTeam); }; } 
+  else if (teamSelectId) { newSel.onchange = function() { handlePersonSelect(this, null, teamSelectId); }; }
+  populateSelect(selectId, members, currentVal);
+}
+
+function onDepChange(depSelectId, personSelectId){
+  const team = document.getElementById(depSelectId)?.value || '';
+  const members = DEP_MEMBERS[team] || [];
+  const pSel = document.getElementById(personSelectId);
+  if(!pSel) return;
+  if(pSel.tagName === 'INPUT') { revertToSelect(personSelectId, null, depSelectId, ''); } 
+  else { pSel.disabled = false; populateSelect(personSelectId, members, ''); }
+}
+
 let currentRole = 'presales';
 let editIdx = -1;
 let loggedInUser = localStorage.getItem('pulseLoggedInUser') || '';
-
-// ─── USER PICKER ───────────────────────────────────────────
-function getAllMembers(){
-  const all = new Set();
-  Object.values(DEP_MEMBERS||{}).forEach(arr=>arr.forEach(m=>all.add(m)));
-  return [...all].sort();
-}
+let rows = [];
 
 function openUserPicker(){
   const members = getAllMembers();
   const list = document.getElementById('userPickerList');
   list.innerHTML = members.map(m=>`
-    <button onclick="setLoggedInUser('${m}')" style="
-      text-align:left;padding:10px 14px;border-radius:8px;border:1px solid ${loggedInUser===m?'var(--accent)':'var(--border)'};
-      background:${loggedInUser===m?'rgba(var(--accent-rgb,99,102,241),0.12)':'var(--surface2)'};
-      color:${loggedInUser===m?'var(--accent)':'var(--text)'};
-      cursor:pointer;font-size:13px;display:flex;align-items:center;gap:8px">
+    <button onclick="setLoggedInUser('${m.replace(/'/g, "\\'")}')" style="text-align:left;padding:10px 14px;border-radius:8px;border:1px solid ${loggedInUser===m?'var(--accent)':'var(--border)'};background:${loggedInUser===m?'rgba(0,119,200,0.12)':'var(--bg3)'};color:${loggedInUser===m?'var(--accent)':'var(--text)'};cursor:pointer;font-size:13px;display:flex;align-items:center;gap:8px">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex-shrink:0"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg>
       ${m}
       ${loggedInUser===m?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;margin-left:auto"><polyline points="20 6 9 17 4 12"/></svg>':''}
     </button>`).join('');
   document.getElementById('userPickerOverlay').style.display='flex';
 }
+function closeUserPicker(){ document.getElementById('userPickerOverlay').style.display='none'; }
+function setLoggedInUser(name){ loggedInUser = name; localStorage.setItem('pulseLoggedInUser', name); document.getElementById('loggedInLabel').textContent = name; document.getElementById('loggedInLabel').style.color = 'var(--accent)'; closeUserPicker(); showToast('✓ Logged in as ' + name); }
+document.addEventListener('click', function(e){ const overlay = document.getElementById('userPickerOverlay'); if(overlay && e.target === overlay) closeUserPicker(); });
 
-function closeUserPicker(){
-  document.getElementById('userPickerOverlay').style.display='none';
-}
-
-function setLoggedInUser(name){
-  loggedInUser = name;
-  localStorage.setItem('pulseLoggedInUser', name);
-  document.getElementById('loggedInLabel').textContent = name;
-  document.getElementById('loggedInLabel').style.color = 'var(--accent)';
-  closeUserPicker();
-  showToast('✓ Logged in as ' + name);
-}
-
-// Close user picker on backdrop click
-document.addEventListener('click', function(e){
-  const overlay = document.getElementById('userPickerOverlay');
-  if(overlay && e.target === overlay) closeUserPicker();
-});
-
-
-let rows = []; // loaded from Google Sheets via n8n
-
-// ─── HELPERS ───────────────────────────────────────────────
-function getSelectStyle(label){
-  const s = statusConfig.find(x=>x.label===label);
-  if(!s) return 'background:#333;color:#aaa;';
-  const hex = s.color;
-  const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
-  return `background:rgba(${r},${g},${b},0.18);color:${hex};`;
-}
-
-function badge(s){
-  const cls = getBadgeClass(s);
-  const color = getStatusColor(s);
-  return `<span class="badge ${cls}" style="--dot:${color}">${s}</span>`;
-}
+function getSelectStyle(label){ const s = statusConfig.find(x=>x.label===label); if(!s) return 'background:#333;color:#aaa;'; const r=parseInt(s.color.slice(1,3),16), g=parseInt(s.color.slice(3,5),16), b=parseInt(s.color.slice(5,7),16); return `background:rgba(${r},${g},${b},0.18);color:${s.color};`; }
+function badge(s){ const cls = getBadgeClass(s); const color = getStatusColor(s); return `<span class="badge ${cls}" style="--dot:${color}">${s}</span>`; }
 function trunc(v,w=130){ return `<span class="cell-trunc" style="max-width:${w}px" title="${v||''}">${v||'—'}</span>`; }
 
-// ─── ROLE SWITCH ───────────────────────────────────────────
-function setRole(role){
-  currentRole = role;
-  document.querySelectorAll('.role-btn').forEach((b,i)=>b.classList.toggle('active',['presales','technical'][i]===role));
-  document.getElementById('addBtn').style.display = role==='presales'?'flex':'none';
-  renderTable();
-}
-
-// ─── SETTINGS — STATUS MANAGER ────────────────────────────
-function openSettings(){
-  renderStatusList();
-  document.getElementById('settingsOverlay').classList.add('open');
-}
-
+function openSettings(){ renderStatusList(); document.getElementById('settingsOverlay').classList.add('open'); }
 function renderStatusList(){
   const list = document.getElementById('statusList');
   list.innerHTML = statusConfig.map((s,i)=>`
     <div class="status-item">
-      <div class="status-color-dot" style="background:${s.color}" onclick="triggerColorPicker(${i})" title="Click to change color"></div>
+      <div class="status-color-dot" style="background:${s.color}" onclick="triggerColorPicker(${i})"></div>
       <input type="color" class="status-color-input" id="cp_${i}" value="${s.color}" onchange="updateStatusColor(${i},this.value)">
-      <input class="status-name-input" type="text" value="${s.label}" onchange="updateStatusLabel(${i},this.value)" placeholder="Status name">
-      <select class="status-type-sel" onchange="updateStatusAction(${i},this.value)" title="n8n action">
-        ${['notify_tech','notify_presales','notify_mgmt','update'].map(a=>`<option value="${a}"${s.action===a?' selected':''}>${a}</option>`).join('')}
-      </select>
-      <button class="status-del" onclick="deleteStatus(${i})" title="Delete">✕</button>
-    </div>
-  `).join('');
+      <input class="status-name-input" type="text" value="${s.label}" onchange="updateStatusLabel(${i},this.value)">
+      <select class="status-type-sel" onchange="updateStatusAction(${i},this.value)">${['notify_tech','notify_presales','notify_mgmt','update'].map(a=>`<option value="${a}"${s.action===a?' selected':''}>${a}</option>`).join('')}</select>
+      <button class="status-del" onclick="deleteStatus(${i})">✕</button>
+    </div>`).join('');
 }
-
-function triggerColorPicker(i){
-  document.getElementById('cp_'+i).click();
-}
-
-function updateStatusColor(i, color){
-  statusConfig[i].color = color;
-  renderStatusList();
-}
-
-function updateStatusLabel(i, label){
-  statusConfig[i].label = label;
-}
-
-function updateStatusAction(i, action){
-  statusConfig[i].action = action;
-}
-
-function deleteStatus(i){
-  if(statusConfig.length<=1){ showToast('Need at least one status!'); return; }
-  statusConfig.splice(i,1);
-  renderStatusList();
-}
-
-function addStatusItem(){
-  statusConfig.push({ label:'New Status', color:'#8b92a8', action:'update' });
-  renderStatusList();
-  document.getElementById('statusList')?.lastElementChild?.scrollIntoView({behavior:'smooth'});
-}
-
+function triggerColorPicker(i){ document.getElementById('cp_'+i).click(); }
+function updateStatusColor(i, color){ statusConfig[i].color = color; renderStatusList(); }
+function updateStatusLabel(i, label){ statusConfig[i].label = label; }
+function updateStatusAction(i, action){ statusConfig[i].action = action; }
+function deleteStatus(i){ if(statusConfig.length<=1){ showToast('Need at least one status!'); return; } statusConfig.splice(i,1); renderStatusList(); }
+function addStatusItem(){ statusConfig.push({ label:'New Status', color:'#8b92a8', action:'update' }); renderStatusList(); document.getElementById('statusList')?.lastElementChild?.scrollIntoView({behavior:'smooth'}); }
 function saveSettings(){
-  document.querySelectorAll('#statusList .status-item').forEach((el,i)=>{
-    const inp = el.querySelector('.status-name-input');
-    if(inp && statusConfig[i]) statusConfig[i].label = inp.value || statusConfig[i].label;
-  });
-  rebuildStatusStyles();
-  rebuildStatusDropdown();
-  renderPresalesTable();
-  renderTechTable();
+  document.querySelectorAll('#statusList .status-item').forEach((el,i)=>{ const inp = el.querySelector('.status-name-input'); if(inp && statusConfig[i]) statusConfig[i].label = inp.value || statusConfig[i].label; });
+  rebuildStatusStyles(); rebuildStatusDropdown(); renderPresalesTable(); renderTechTable();
   if(document.getElementById('pane-analytics')?.classList.contains('active')) renderAnalytics();
-  closeModal('settingsOverlay');
-  showToast('Status options saved!');
-}
-
-// ─── DEPENDENCY HELPERS ────────────────────────────────────
-function onDepChange(depSelectId, personSelectId){
-  const team = document.getElementById(depSelectId)?.value || '';
-  const members = getMembersForTeam(team);
-  const pSel = document.getElementById(personSelectId);
-  if(!pSel) return;
-  pSel.innerHTML = `<option value="">— Select Person —</option>` +
-    members.map(m=>`<option value="${m}">${m}</option>`).join('');
+  closeModal('settingsOverlay'); showToast('Status options saved!');
 }
 
 function setDepFields(teamId, personId, teamVal, personVal){
-  const tSel = document.getElementById(teamId);
-  if(tSel){ tSel.value = teamVal||''; onDepChange(teamId, personId); }
+  const tSel = document.getElementById(teamId); if(tSel){ tSel.value = teamVal||''; }
   const pSel = document.getElementById(personId);
-  if(pSel && personVal) pSel.value = personVal;
+  if(pSel) {
+    if(pSel.tagName === 'INPUT') { revertToSelect(personId, null, teamId, ''); }
+    pSel.disabled = false; onDepChange(teamId, personId);
+    setTimeout(() => { const pSelNew = document.getElementById(personId); if(pSelNew) { const members = DEP_MEMBERS[teamVal] || []; populateSelect(personId, members, personVal || ''); } }, 0);
+  }
 }
+function getDepCombined(teamId, personId){ const team = document.getElementById(teamId)?.value || ''; const personEl = document.getElementById(personId); const person = personEl ? personEl.value : ''; return person ? `${team} — ${person}` : team; }
 
-function getDepCombined(teamId, personId){
-  const team   = document.getElementById(teamId)?.value  || '';
-  const person = document.getElementById(personId)?.value || '';
-  return person ? `${team} — ${person}` : team;
-}
+function rfpLink(r){ return r.rfp_link ? `<a class="rfp-link" href="${r.rfp_link}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>SharePoint</a>` : '<span class="cell-muted">—</span>'; }
+function statusDropdown(r,i){ return `<select class="status-select" data-idx="${i}" onchange="quickStatusChange(${i},this.value)" style="${getSelectStyle(r.status)}">${statusConfig.map(s=>`<option value="${s.label}" ${s.label===r.status?'selected':''}>${s.label}</option>`).join('')}</select>`; }
+function histBtn(i){ return `<button class="btn-act hist" onclick="showHistory(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>History</button>`; }
 
-// Populate presales name dropdown from Pre-Sales Team members
-function populateSalesSelect(selectId, currentVal){
-  const members = getMembersForTeam('Pre-Sales Team');
-  const el = document.getElementById(selectId);
-  if(!el) return;
-  el.innerHTML = `<option value="">— Select Pre-Sales Member —</option>` +
-    members.map(m=>`<option value="${m}" ${m===currentVal?'selected':''}>${m}</option>`).join('');
-}
-
-// Populate tech name dropdown from Technical Team members
-function populateTechSelect(selectId, currentVal){
-  const members = getMembersForTeam('Technical Team');
-  const el = document.getElementById(selectId);
-  if(!el) return;
-  el.innerHTML = `<option value="">— Select Technical Member —</option>` +
-    members.map(m=>`<option value="${m}" ${m===currentVal?'selected':''}>${m}</option>`).join('');
-}
-
-// ─── SHARED HELPERS ────────────────────────────────────────
-function rfpLink(r){
-  return r.rfp_link
-    ? `<a class="rfp-link" href="${r.rfp_link}" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>SharePoint</a>`
-    : '<span class="cell-muted">—</span>';
-}
-function statusDropdown(r,i){
-  return `<select class="status-select" data-idx="${i}" onchange="quickStatusChange(${i},this.value)" style="${getSelectStyle(r.status)}">${statusConfig.map(s=>`<option value="${s.label}" ${s.label===r.status?'selected':''}>${s.label}</option>`).join('')}</select>`;
-}
-function histBtn(i){
-  return `<button class="btn-act hist" onclick="showHistory(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>History</button>`;
-}
-
-// ─── MULTI-COLUMN FILTER STATE ───────────────────────────────
-const psFilters  = { opp_name:'', opp_id:'', sales_name:'', tech_name:'', status:'', dependency:'' };
+const psFilters = { opp_name:'', opp_id:'', sales_name:'', tech_name:'', status:'', dependency:'' };
 const techFilters = { opp_name:'', opp_id:'', sales_name:'', tech_name:'', status:'', dependency:'' };
 
-function buildFilterRowOnce(containerId, filterObj, renderFn){
-  const el = document.getElementById(containerId);
-  if(el && el.children.length > 0) return; // already built — don't rebuild while typing
-  buildFilterRow(containerId, filterObj, renderFn);
-}
-
+function buildFilterRowOnce(containerId, filterObj, renderFn){ const el = document.getElementById(containerId); if(el && el.children.length > 0) return; buildFilterRow(containerId, filterObj, renderFn); }
 function buildFilterRow(containerId, filterObj, renderFn){
-  const el = document.getElementById(containerId);
-  if(!el) return;
-
-  // unique values for status dropdown
+  const el = document.getElementById(containerId); if(!el) return;
   const statuses = ['', ...statusConfig.map(s=>s.label)];
-
-  // unique tech names from current rows
   const techNames = ['', ...Array.from(new Set(rows.map(r=>r.tech_name).filter(Boolean))).sort()];
-
-  // unique sales names from current rows
   const salesNames = ['', ...Array.from(new Set(rows.map(r=>r.sales_name).filter(Boolean))).sort()];
-
-  el.innerHTML = `
-    <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
-      ${['opp_name','opp_id'].map(k=>`
-        <div class="filter-box">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" placeholder="${{opp_name:'Opp Name',opp_id:'Opp ID'}[k]}..." value="${filterObj[k]}"
-            oninput="setFilter('${containerId}','${k}',this.value)" style="width:${k==='opp_name'?140:90}px" />
-        </div>`).join('')}
-      <div class="filter-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg>
-        <select oninput="setFilter('${containerId}','sales_name',this.value)" style="background:none;border:none;outline:none;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;width:130px">
-          <option value="">All Pre-Sales</option>
-          ${salesNames.filter(n=>n).map(n=>`<option value="${n}" ${filterObj.sales_name===n?'selected':''}>${n}</option>`).join('')}
-        </select>
-      </div>
-      <div class="filter-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        <select oninput="setFilter('${containerId}','tech_name',this.value)" style="background:none;border:none;outline:none;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;width:130px">
-          <option value="">All Tech Names</option>
-          ${techNames.filter(n=>n).map(n=>`<option value="${n}" ${filterObj.tech_name===n?'selected':''}>${n}</option>`).join('')}
-        </select>
-      </div>
-      <div class="filter-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-        <select oninput="setFilter('${containerId}','dependency',this.value)" style="background:none;border:none;outline:none;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;width:130px">
-          <option value="">All Dependencies</option>
-          <option value="Sales Team" ${filterObj.dependency==='Sales Team'?'selected':''}>Sales Team</option>
-          <option value="Pre-Sales Team" ${filterObj.dependency==='Pre-Sales Team'?'selected':''}>Pre-Sales Team</option>
-          <option value="Technical Team" ${filterObj.dependency==='Technical Team'?'selected':''}>Technical Team</option>
-          <option value="Management Team" ${filterObj.dependency==='Management Team'?'selected':''}>Management Team</option>
-        </select>
-      </div>
-      <div class="filter-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><circle cx="12" cy="12" r="10"/><polyline points="9 11 12 14 15 11"/></svg>
-        <select oninput="setFilter('${containerId}','status',this.value)" style="background:none;border:none;outline:none;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;width:110px">
-          ${statuses.map(s=>`<option value="${s}" ${filterObj.status===s?'selected':''}>${s||'All Statuses'}</option>`).join('')}
-        </select>
-      </div>
-      ${Object.values(filterObj).some(v=>v) ? `<button onclick="clearFilters('${containerId}')" style="background:none;border:1px solid var(--border2);border-radius:6px;padding:4px 8px;font-family:var(--font);font-size:11px;color:var(--text3);cursor:pointer;">✕ Clear</button>` : ''}
-    </div>`;
+  el.innerHTML = `<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
+    ${['opp_name','opp_id'].map(k=>`<div class="filter-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" placeholder="${{opp_name:'Opp Name',opp_id:'Opp ID'}[k]}..." value="${filterObj[k]}" oninput="setFilter('${containerId}','${k}',this.value)" style="width:${k==='opp_name'?140:90}px" /></div>`).join('')}
+    <div class="filter-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a8.38 8.38 0 0113 0"/></svg><select oninput="setFilter('${containerId}','sales_name',this.value)" style="background:none;border:none;outline:none;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;width:130px"><option value="">All Pre-Sales</option>${salesNames.filter(n=>n).map(n=>`<option value="${n}" ${filterObj.sales_name===n?'selected':''}>${n}</option>`).join('')}</select></div>
+    <div class="filter-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><select oninput="setFilter('${containerId}','tech_name',this.value)" style="background:none;border:none;outline:none;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;width:130px"><option value="">All Tech Names</option>${techNames.filter(n=>n).map(n=>`<option value="${n}" ${filterObj.tech_name===n?'selected':''}>${n}</option>`).join('')}</select></div>
+    <div class="filter-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><select oninput="setFilter('${containerId}','dependency',this.value)" style="background:none;border:none;outline:none;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;width:130px"><option value="">All Dependencies</option><option value="Pre-Sales Team" ${filterObj.dependency==='Pre-Sales Team'?'selected':''}>Pre-Sales Team</option><option value="Technical Team" ${filterObj.dependency==='Technical Team'?'selected':''}>Technical Team</option><option value="Management Team" ${filterObj.dependency==='Management Team'?'selected':''}>Management Team</option></select></div>
+    <div class="filter-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;color:var(--text3)"><circle cx="12" cy="12" r="10"/><polyline points="9 11 12 14 15 11"/></svg><select oninput="setFilter('${containerId}','status',this.value)" style="background:none;border:none;outline:none;font-family:var(--font);font-size:12px;color:var(--text2);cursor:pointer;width:110px">${statuses.map(s=>`<option value="${s}" ${filterObj.status===s?'selected':''}>${s||'All Statuses'}</option>`).join('')}</select></div>
+    ${Object.values(filterObj).some(v=>v) ? `<button onclick="clearFilters('${containerId}')" style="background:none;border:1px solid var(--border2);border-radius:6px;padding:4px 8px;font-family:var(--font);font-size:11px;color:var(--text3);cursor:pointer;">✕ Clear</button>` : ''}</div>`;
 }
+function setFilter(containerId, key, val){ const obj = containerId==='psFilterRow' ? psFilters : techFilters; obj[key] = val; if(containerId==='psFilterRow') renderPresalesTable(); else renderTechTable(); }
+function clearFilters(containerId){ const obj = containerId==='psFilterRow' ? psFilters : techFilters; Object.keys(obj).forEach(k=>obj[k]=''); const el = document.getElementById(containerId); if(el) el.innerHTML = ''; if(containerId==='psFilterRow') renderPresalesTable(); else renderTechTable(); }
+function applyFilters(r, filters){ const q = (field) => filters[field]?.toLowerCase()||''; const str = (v) => String(v ?? '').toLowerCase(); if(q('opp_name') && !str(r.opp_name).includes(q('opp_name'))) return false; if(q('opp_id') && !str(r.opp_id).includes(q('opp_id'))) return false; if(q('sales_name') && !str(r.sales_name).includes(q('sales_name'))) return false; if(q('tech_name') && !str(r.tech_name).includes(q('tech_name'))) return false; if(q('status') && r.status !== filters.status) return false; if(q('dependency') && !str(r.dependency).includes(q('dependency'))) return false; return true; }
 
-function setFilter(containerId, key, val){
-  const obj = containerId==='psFilterRow' ? psFilters : techFilters;
-  obj[key] = val;
-  if(containerId==='psFilterRow')  renderPresalesTable();
-  else                             renderTechTable();
-}
-const setFilterDebounced = debounce(setFilter, 250);
-
-function clearFilters(containerId){
-  const obj = containerId==='psFilterRow' ? psFilters : techFilters;
-  Object.keys(obj).forEach(k=>obj[k]='');
-  // Force rebuild filter row after clearing
-  const el = document.getElementById(containerId);
-  if(el) el.innerHTML = '';
-  if(containerId==='psFilterRow')  renderPresalesTable();
-  else                             renderTechTable();
-}
-
-function applyFilters(r, filters){
-  const q = (field) => filters[field]?.toLowerCase()||'';
-  // Always convert to string first — opp_id can be a number from Google Sheets
-  const str = (v) => String(v ?? '').toLowerCase();
-  if(q('opp_name')   && !str(r.opp_name).includes(q('opp_name')))    return false;
-  if(q('opp_id')     && !str(r.opp_id).includes(q('opp_id')))        return false;
-  if(q('sales_name') && !str(r.sales_name).includes(q('sales_name'))) return false;
-  if(q('tech_name')  && !str(r.tech_name).includes(q('tech_name')))  return false;
-  if(q('status')     && r.status !== filters.status)                   return false;
-  if(q('dependency') && !str(r.dependency).includes(q('dependency'))) return false;
-  return true;
-}
-
-// ─── PRE-SALES TABLE ─────────────────────────────────────────
 function renderPresalesTable(){
   buildFilterRowOnce('psFilterRow', psFilters, renderPresalesTable);
-  const tbody = document.getElementById('oppBodyPresales');
-  if(!tbody) return;
-  tbody.innerHTML='';
+  const tbody = document.getElementById('oppBodyPresales'); if(!tbody) return; tbody.innerHTML='';
   const finalStatuses = ['Submitted','Won','Cancelled'];
   rows.forEach((r,i)=>{
     if(!applyFilters(r, psFilters)) return;
-    const feedbackCell = finalStatuses.includes(r.status)
-      ? trunc(r.feedback,100)
-      : `<span style="font-size:11px;color:var(--text3);font-style:italic">Available when Submitted / Won / Cancelled</span>`;
+    const feedbackCell = finalStatuses.includes(r.status) ? trunc(r.feedback,100) : `<span style="font-size:11px;color:var(--text3);font-style:italic">Available when Submitted / Won / Cancelled</span>`;
     const tr=document.createElement('tr');
-    tr.innerHTML=`
-      <td><span class="cell-name">${r.opp_name}</span></td>
-      <td><span class="cell-id">${r.opp_id}</span></td>
-      <td>${trunc(r.subject,150)}</td>
-      <td>${rfpLink(r)}</td>
-      <td class="cell-muted" style="font-size:12px">${r.sales_name||'—'}</td>
-      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.submit_date||'—'}</td>
-      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.init_date||'—'}</td>
-      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td>
-      <td>${statusDropdown(r,i)}</td>
-      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').split(' — ')[0]}</td>
-      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').includes(' — ') ? (r.dependency||'—').split(' — ')[1] : '—'}</td>
-      <td>${feedbackCell}</td>
-      <td>
-        <div class="actions">
-          <button class="btn-act" onclick="openPresalesUpdate(${i})">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Update</button>
-          ${histBtn(i)}
-        </div>
-      </td>`;
+    tr.innerHTML=`<td><span class="cell-name">${r.opp_name}</span></td><td><span class="cell-id">${r.opp_id}</span></td><td>${trunc(r.subject,150)}</td><td>${rfpLink(r)}</td><td class="cell-muted" style="font-size:12px">${r.sales_name||'—'}</td><td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.submit_date||'—'}</td><td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.init_date||'—'}</td><td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td><td>${statusDropdown(r,i)}</td><td class="cell-muted" style="font-size:12px">${(r.dependency||'—').split(' — ')[0]}</td><td class="cell-muted" style="font-size:12px">${(r.dependency||'—').includes(' — ') ? (r.dependency||'—').split(' — ')[1] : '—'}</td><td>${feedbackCell}</td><td><div class="actions"><button class="btn-act" onclick="openPresalesUpdate(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Update</button>${histBtn(i)}</div></td>`;
     tbody.appendChild(tr);
   });
 }
 
-// ─── TECHNICAL TABLE ─────────────────────────────────────────
 function renderTechTable(){
   buildFilterRowOnce('techFilterRow', techFilters, renderTechTable);
-  const tbody = document.getElementById('oppBodyTech');
-  if(!tbody) return;
-  tbody.innerHTML='';
+  const tbody = document.getElementById('oppBodyTech'); if(!tbody) return; tbody.innerHTML='';
   const finalStatuses = ['Submitted','Won','Cancelled'];
   rows.forEach((r,i)=>{
     if(!applyFilters(r, techFilters)) return;
-    const feedbackCell = finalStatuses.includes(r.status)
-      ? trunc(r.feedback,100)
-      : `<span style="font-size:11px;color:var(--text3);font-style:italic">Available when Submitted / Won / Cancelled</span>`;
+    const feedbackCell = finalStatuses.includes(r.status) ? trunc(r.feedback,100) : `<span style="font-size:11px;color:var(--text3);font-style:italic">Available when Submitted / Won / Cancelled</span>`;
+    const techNameCell = r.tech_name ? `<span class="cell-muted" style="font-size:12px">${r.tech_name}</span>` : '<span class="cell-muted">—</span>';
     const tr=document.createElement('tr');
-    tr.innerHTML=`
-      <td><span class="cell-name">${r.opp_name}</span></td>
-      <td><span class="cell-id">${r.opp_id}</span></td>
-      <td>${trunc(r.subject,150)}</td>
-      <td>${rfpLink(r)}</td>
-      <td class="cell-muted" style="font-size:12px">${r.sales_name||'—'}</td>
-      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.submit_date||'—'}</td>
-      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td>
-      <td>${statusDropdown(r,i)}</td>
-      <td>${r.tech_name?`<div class="tech-name-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>${r.tech_name}</div>`:'<span class="cell-muted">—</span>'}</td>
-      <td>${trunc(r.comments)}</td>
-      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').split(' — ')[0]}</td>
-      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').includes(' — ') ? (r.dependency||'—').split(' — ')[1] : '—'}</td>
-      <td>${feedbackCell}</td>
-      <td>
-        <div class="actions">
-          <button class="btn-act tech" onclick="openTechUpdate(${i})">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Update</button>
-          ${histBtn(i)}
-        </div>
-      </td>`;
+    tr.innerHTML=`<td><span class="cell-name">${r.opp_name}</span></td><td><span class="cell-id">${r.opp_id}</span></td><td>${trunc(r.subject,150)}</td><td>${rfpLink(r)}</td><td class="cell-muted" style="font-size:12px">${r.sales_name||'—'}</td><td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.submit_date||'—'}</td><td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td><td>${statusDropdown(r,i)}</td><td>${techNameCell}</td><td>${trunc(r.comments)}</td><td class="cell-muted" style="font-size:12px">${(r.dependency||'—').split(' — ')[0]}</td><td class="cell-muted" style="font-size:12px">${(r.dependency||'—').includes(' — ') ? (r.dependency||'—').split(' — ')[1] : '—'}</td><td>${feedbackCell}</td><td><div class="actions"><button class="btn-act tech" onclick="openTechUpdate(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Update</button>${histBtn(i)}</div></td>`;
     tbody.appendChild(tr);
   });
 }
 
-// ─── BODY-ONLY RENDERS (for status changes) ───────────────
-function _renderPresalesBody(){
-  const tbody = document.getElementById('oppBodyPresales');
-  if(!tbody) return;
-  const finalStatuses = ['Submitted','Won','Cancelled'];
-  tbody.innerHTML = '';
-  rows.forEach((r,i)=>{
-    if(!applyFilters(r, psFilters)) return;
-    const feedbackCell = finalStatuses.includes(r.status)
-      ? trunc(r.feedback,100)
-      : `<span style="font-size:11px;color:var(--text3);font-style:italic">Available when Submitted / Won / Cancelled</span>`;
-    const tr=document.createElement('tr');
-    tr.innerHTML=`
-      <td><span class="cell-name">${r.opp_name}</span></td>
-      <td><span class="cell-id">${r.opp_id}</span></td>
-      <td>${trunc(r.subject,150)}</td>
-      <td>${rfpLink(r)}</td>
-      <td class="cell-muted" style="font-size:12px">${r.sales_name||'—'}</td>
-      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.submit_date||'—'}</td>
-      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.init_date||'—'}</td>
-      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td>
-      <td>${statusDropdown(r,i)}</td>
-      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').split(' — ')[0]}</td>
-      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').includes(' — ') ? (r.dependency||'—').split(' — ')[1] : '—'}</td>
-      <td>${feedbackCell}</td>
-      <td><div class="actions">
-        <button class="btn-act" onclick="openPresalesUpdate(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Update</button>
-        ${histBtn(i)}
-      </div></td>`;
-    tbody.appendChild(tr);
-  });
-}
-
-function _renderTechBody(){
-  const tbody = document.getElementById('oppBodyTech');
-  if(!tbody) return;
-  const finalStatuses = ['Submitted','Won','Cancelled'];
-  tbody.innerHTML = '';
-  rows.forEach((r,i)=>{
-    if(!applyFilters(r, techFilters)) return;
-    const feedbackCell = finalStatuses.includes(r.status)
-      ? trunc(r.feedback,100)
-      : `<span style="font-size:11px;color:var(--text3);font-style:italic">Available when Submitted / Won / Cancelled</span>`;
-    const tr=document.createElement('tr');
-    tr.innerHTML=`
-      <td><span class="cell-name">${r.opp_name}</span></td>
-      <td><span class="cell-id">${r.opp_id}</span></td>
-      <td>${trunc(r.subject,150)}</td>
-      <td>${rfpLink(r)}</td>
-      <td class="cell-muted" style="font-size:12px">${r.sales_name||'—'}</td>
-      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.submit_date||'—'}</td>
-      <td class="cell-muted" style="font-family:var(--mono);font-size:11px">${r.clarif_date||'—'}</td>
-      <td>${statusDropdown(r,i)}</td>
-      <td>${r.tech_name?`<div class="tech-name-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>${r.tech_name}</div>`:'<span class="cell-muted">—</span>'}</td>
-      <td>${trunc(r.comments)}</td>
-      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').split(' — ')[0]}</td>
-      <td class="cell-muted" style="font-size:12px">${(r.dependency||'—').includes(' — ') ? (r.dependency||'—').split(' — ')[1] : '—'}</td>
-      <td>${feedbackCell}</td>
-      <td><div class="actions">
-        <button class="btn-act tech" onclick="openTechUpdate(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Update</button>
-        ${histBtn(i)}
-      </div></td>`;
-    tbody.appendChild(tr);
-  });
-}
-
-// ─── INLINE STATUS CHANGE ─────────────────────────────────
 function quickStatusChange(i, newStatus){
-  const r = rows[i];
-  const oldStatus = r.status;
-  r.status = newStatus;
-
-  // Update select style immediately
-  const sel = document.querySelector(`.status-select[data-idx="${i}"]`);
-  if(sel) sel.style.cssText = getSelectStyle(newStatus);
-
-  // Re-render tables without rebuilding filter row
-  if(document.getElementById('pane-presales').classList.contains('active')) _renderPresalesBody();
-  if(document.getElementById('pane-technical').classList.contains('active')) _renderTechBody();
-  // Sync to sheet in background
-  setTimeout(loadFromSheet, 2000);
-
-  // History entry
+  const r = rows[i]; r.status = newStatus;
+  const sel = document.querySelector(`.status-select[data-idx="${i}"]`); if(sel) sel.style.cssText = getSelectStyle(newStatus);
   const now = new Date().toISOString().slice(0,16).replace('T',' ');
   const actor = currentRole==='presales' ? (r.sales_name||'Pre-Sales') : (r.tech_name||'Technical');
-  if(!r.history) r.history=[];
-  r.history.push({ role:currentRole, action:newStatus, status:newStatus, comment:'', date:now, actor });
-
-  // n8n
+  if(!r.history) r.history=[]; r.history.push({ role:currentRole, action:newStatus, status:newStatus, comment:'', date:now, actor });
   const _action = getStatusAction(newStatus) || 'update';
-  sendWebhook({ ...r, _action, _role:currentRole, _timestamp:new Date().toISOString(), history:undefined });
-  showToast(`Status → ${newStatus}`);
+  sendWebhook({ ...r, _action, _role:currentRole, actor: actor, _timestamp:new Date().toISOString(), history:undefined });
+  setTimeout(loadFromSheet, 1500); showToast(`Status → ${newStatus}`);
 }
 
-// ─── MODAL OPEN ────────────────────────────────────────────
 function clearForm(){
-  ['f_opp_name','f_opp_id','f_subject','f_rfp_link','f_sales_name',
-   'f_submit_date','f_init_date','f_clarif_date','f_tm',
-   'f_dependency','f_feedback','f_ps_comments','f_tech_name','f_comments'].forEach(id=>{
-    const el=document.getElementById(id); if(el) el.value='';
-  });
+  ['f_opp_name','f_opp_id','f_subject','f_rfp_link','f_sales_name','f_submit_date','f_init_date','f_clarif_date','f_dependency','f_feedback','f_ps_comments','f_tech_name','f_comments'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
   document.getElementById('f_status').value = statusConfig[0]?.label||'New';
-}
-
-function fillForm(r){
-  const map = {
-    f_opp_name:r.opp_name, f_opp_id:r.opp_id, f_subject:r.subject,
-    f_rfp_link:r.rfp_link, f_sales_name:r.sales_name, f_submit_date:r.submit_date,
-    f_init_date:r.init_date, f_clarif_date:r.clarif_date, f_tm:r.tm,
-    f_dependency:r.dependency, f_feedback:r.feedback, f_ps_comments:r.ps_comments||'',
-    f_tech_name:r.tech_name, f_comments:r.comments
-  };
-  Object.entries(map).forEach(([id,val])=>{ const el=document.getElementById(id); if(el) el.value=val||''; });
-  document.getElementById('f_status').value = r.status||statusConfig[0]?.label||'New';
+  document.getElementById('f_dep_person').disabled = true;
+  document.getElementById('f_tech_dep_person').disabled = true;
 }
 
 function openAdd(){
-  editIdx=-1;
-  currentRole='presales';
+  editIdx=-1; currentRole='presales';
   document.getElementById('mTitle').textContent='Add New Opportunity';
   document.getElementById('secPresales').style.display='block';
   document.getElementById('secTech').style.display='none';
   clearForm();
-  // Auto-set init_date to today (locked — cannot be changed)
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('f_init_date').value = today;
-  document.getElementById('f_init_date').readOnly = true;
-  document.getElementById('f_init_date').style.opacity = '0.5';
-  document.getElementById('f_init_date').style.cursor = 'not-allowed';
-  document.getElementById('init_date_note').textContent = '(auto-set — locked)';
+  populateSelect('f_sales_name', DEP_MEMBERS['Pre-Sales Team'] || []);
   document.getElementById('mainOverlay').classList.add('open');
-}
-
-function openEdit(i){
-  editIdx=i;
-  document.getElementById('mTitle').textContent='Edit Opportunity';
-  document.getElementById('secPresales').style.display='block';
-  document.getElementById('secTech').style.display='block';
-  fillForm(rows[i]);
-  // Lock opp_name, opp_id and init_date — cannot be changed on edit
-  document.getElementById('f_opp_name').readOnly = true;
-  document.getElementById('f_opp_name').style.opacity = '0.5';
-  document.getElementById('f_opp_id').readOnly = true;
-  document.getElementById('f_opp_id').style.opacity = '0.5';
-  document.getElementById('f_init_date').readOnly = true;
-  document.getElementById('f_init_date').style.opacity = '0.5';
-  document.getElementById('init_date_note').textContent = '(locked — set on creation)';
-  populateSalesSelect('f_sales_name', '');
-  populateTechSelect('f_tech_name', '');
-  document.getElementById('mainOverlay').classList.add('open');
-}
-
-// Pre-Sales Update — opens dedicated PS modal (status + comments only)
-function openPresalesUpdate(i){
-  editIdx=i;
-  currentRole='presales';
-  const r=rows[i];
-  document.getElementById('psUpdateTitle').textContent='Update — '+r.opp_name;
-  document.getElementById('psUpdateOppName').textContent=r.opp_name;
-  document.getElementById('psUpdateOppId').textContent=r.opp_id;
-  const hid = document.getElementById('f_hidden_opp_id');
-  if(hid) hid.value = r.opp_id||'';
-  const sel=document.getElementById('ps_status');
-  sel.innerHTML=statusConfig.map(s=>`<option value="${s.label}" ${s.label===r.status?'selected':''}>${s.label}</option>`).join('');
-  document.getElementById('ps_comments').value   = r.ps_comments||'';
-  document.getElementById('ps_rfp_link').value   = r.rfp_link||'';
-  document.getElementById('ps_sales_name').value = r.sales_name||'';
-  document.getElementById('ps_submit_date').value= r.submit_date||'';
-  document.getElementById('ps_clarif_date').value= r.clarif_date||'';
-  populateSalesSelect('ps_sales_name', r.sales_name||'');
-  const depParts = (r.dependency||'').split(' — ');
-  setDepFields('ps_dependency','ps_dep_person', depParts[0]||'', depParts[1]||'');
-  document.getElementById('psUpdateOverlay').classList.add('open');
-}
-
-function savePsUpdate(){
-  if(editIdx<0) return;
-  const r=rows[editIdx];
-  // Guarantee opp_id is present
-  if(!r.opp_id){
-    const hid = document.getElementById('f_hidden_opp_id');
-    if(hid && hid.value) r.opp_id = hid.value;
-  }
-  const newStatus=document.getElementById('ps_status').value;
-  r.status      = newStatus;
-  r.ps_comments = document.getElementById('ps_comments').value;
-  r.dependency  = getDepCombined('ps_dependency','ps_dep_person');
-  r.rfp_link    = document.getElementById('ps_rfp_link').value    || r.rfp_link;
-  r.sales_name  = document.getElementById('ps_sales_name').value  || r.sales_name;
-  r.tech_name   = r.tech_name; // tech name not editable from PS modal
-  r.submit_date = document.getElementById('ps_submit_date').value || r.submit_date;
-  r.clarif_date = document.getElementById('ps_clarif_date').value || r.clarif_date;
-  // history
-  const now=new Date().toISOString().slice(0,16).replace('T',' ');
-  if(!r.history) r.history=[];
-  r.history.push({role:'presales',action:newStatus,status:newStatus,comment:r.ps_comments,dependency:r.dependency||'',date:now,actor:loggedInUser||r.sales_name||'Pre-Sales'});
-  closeModal('psUpdateOverlay');
-  setTimeout(loadFromSheet, 1500);
-  const _action=getStatusAction(newStatus)||'update';
-  sendWebhook({...r,_action,_role:'presales',_timestamp:new Date().toISOString(),history:undefined});
-  showToast('Updated — workflow triggered');
 }
 
 function openTechUpdate(i){
-  editIdx=i;
-  currentRole='technical';
+  editIdx=i; currentRole='technical';
   const r=rows[i];
   document.getElementById('mTitle').textContent='Technical Update — '+r.opp_name;
   document.getElementById('secPresales').style.display='none';
   document.getElementById('secTech').style.display='block';
-  // Store opp_id in hidden field — guaranteed to be sent with update
   document.getElementById('f_hidden_opp_id').value = r.opp_id||'';
-  document.getElementById('f_status').value         = r.status||statusConfig[0]?.label||'New';
-  document.getElementById('f_tech_name').value      = r.tech_name||'';
-  document.getElementById('f_comments').value       = r.comments||'';
-  populateTechSelect('f_tech_name', r.tech_name||'');
+  document.getElementById('f_status').value = r.status||statusConfig[0]?.label||'New';
+  populateSelect('f_tech_name', DEP_MEMBERS['Technical Team'] || [], r.tech_name||'');
+  document.getElementById('f_comments').value = r.comments||'';
   const depPartsTech = (r.dependency||'').split(' — ');
   setDepFields('f_tech_dependency','f_tech_dep_person', depPartsTech[0]||'', depPartsTech[1]||'');
   const finalStatuses = ['Submitted','Won','Cancelled'];
   const feedbackEl = document.getElementById('finalFeedbackGroup');
   if(feedbackEl) feedbackEl.style.display = finalStatuses.includes(r.status)?'block':'none';
-  const ftEl = document.getElementById('f_feedback_tech');
-  if(ftEl) ftEl.value = r.feedback||'';
-  document.getElementById('f_status').onchange = function(){
-    if(feedbackEl) feedbackEl.style.display = finalStatuses.includes(this.value)?'block':'none';
-  };
+  const ftEl = document.getElementById('f_feedback_tech'); if(ftEl) ftEl.value = r.feedback||'';
+  document.getElementById('f_status').onchange = function(){ if(feedbackEl) feedbackEl.style.display = finalStatuses.includes(this.value)?'block':'none'; };
   document.getElementById('mainOverlay').classList.add('open');
+}
+
+function openPresalesUpdate(i){
+  editIdx=i; currentRole='presales';
+  const r=rows[i];
+  document.getElementById('psUpdateTitle').textContent='Update — '+r.opp_name;
+  document.getElementById('psUpdateOppName').textContent=r.opp_name;
+  document.getElementById('psUpdateOppId').textContent=r.opp_id;
+  const hid = document.getElementById('f_hidden_opp_id'); if(hid) hid.value = r.opp_id||'';
+  const sel=document.getElementById('ps_status'); sel.innerHTML=statusConfig.map(s=>`<option value="${s.label}" ${s.label===r.status?'selected':''}>${s.label}</option>`).join('');
+  document.getElementById('ps_comments').value = r.ps_comments||'';
+  document.getElementById('ps_rfp_link').value = r.rfp_link||'';
+  populateSelect('ps_sales_name', DEP_MEMBERS['Pre-Sales Team'] || [], r.sales_name||'');
+  document.getElementById('ps_submit_date').value= r.submit_date||'';
+  document.getElementById('ps_clarif_date').value= r.clarif_date||'';
+  const depParts = (r.dependency||'').split(' — ');
+  setDepFields('ps_dependency','ps_dep_person', depParts[0]||'', depParts[1]||'');
+  document.getElementById('psUpdateOverlay').classList.add('open');
 }
 
 function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 
-// ─── SAVE & WORKFLOW TRIGGER ────────────────────────────────
 function saveOpp(){
   const isNew = editIdx<0;
   const prev  = isNew ? {} : rows[editIdx];
-
-  // ── VALIDATION (only for new opp by presales) ──────────────
   const presalesVisible = document.getElementById('secPresales').style.display!=='none';
+
   if(isNew && presalesVisible){
-    // Check opp_id uniqueness
     const newOppId = document.getElementById('f_opp_id')?.value?.trim();
-    if(newOppId && rows.some(r=>r.opp_id===newOppId)){
-      const el=document.getElementById('f_opp_id');
-      if(el) el.style.borderColor='var(--red)';
-      showToast('⚠️ Opp ID already exists: ' + newOppId);
-      return;
-    }
-    const required = [
-      { id:'f_opp_id',      label:'Opp ID' },
-      { id:'f_opp_name',    label:'Opp Name' },
-      { id:'f_subject',     label:'Subject' },
-      { id:'f_rfp_link',    label:'RFP Link' },
-      { id:'f_sales_name',  label:'Pre-Sales Name' },
-      { id:'f_submit_date', label:'Submission Date' },
-      { id:'f_init_date',   label:'Init Date' },
-      { id:'f_clarif_date', label:'Clarification Date' },
-    ];
+    if(newOppId && rows.some(r=>r.opp_id===newOppId)){ const el=document.getElementById('f_opp_id'); if(el) el.style.borderColor='var(--red)'; showToast('⚠️ Opp ID already exists: ' + newOppId); return; }
+    const required = [{ id:'f_opp_id', label:'Opp ID' }, { id:'f_opp_name', label:'Opp Name' }, { id:'f_subject', label:'Subject' }, { id:'f_rfp_link', label:'RFP Link' }, { id:'f_sales_name', label:'Pre-Sales Name' }, { id:'f_submit_date', label:'Submission Date' }, { id:'f_init_date', label:'Init Date' }, { id:'f_clarif_date', label:'Clarification Date' }];
     const missing = required.filter(f => !document.getElementById(f.id)?.value?.trim());
-    if(missing.length){
-      // Highlight missing fields
-      required.forEach(f => {
-        const el = document.getElementById(f.id);
-        if(el) el.style.borderColor = el.value?.trim() ? '' : 'var(--red)';
-      });
-      showToast('⚠️ Please fill: ' + missing.map(f=>f.label).join(', '));
-      return;
-    }
-    // Clear red borders if all filled
-    required.forEach(f => {
-      const el = document.getElementById(f.id);
-      if(el) el.style.borderColor = '';
-    });
+    if(missing.length){ required.forEach(f => { const el = document.getElementById(f.id); if(el) el.style.borderColor = el.value?.trim() ? '' : 'var(--red)'; }); showToast('⚠️ Please fill: ' + missing.map(f=>f.label).join(', ')); return; }
+    required.forEach(f => { const el = document.getElementById(f.id); if(el) el.style.borderColor = ''; });
   }
 
-  // Build record
   const r = isNew ? {history:[]} : {...prev};
-
-  // Always ensure opp_id is set — from hidden field if tech update, from form if presales
   const hiddenOppId = document.getElementById('f_hidden_opp_id')?.value;
   if(!isNew && hiddenOppId) r.opp_id = hiddenOppId;
 
   if(presalesVisible){
-    r.opp_name    = isNew ? document.getElementById('f_opp_name').value : (prev.opp_name || document.getElementById('f_opp_name').value);
-    r.opp_id      = isNew ? document.getElementById('f_opp_id').value   : (prev.opp_id   || document.getElementById('f_opp_id').value);
-    r.subject     = document.getElementById('f_subject').value;
-    r.rfp_link    = document.getElementById('f_rfp_link').value;
-    r.sales_name  = document.getElementById('f_sales_name').value;
+    r.opp_name = isNew ? document.getElementById('f_opp_name').value : (prev.opp_name || document.getElementById('f_opp_name').value);
+    r.opp_id = isNew ? document.getElementById('f_opp_id').value : (prev.opp_id || document.getElementById('f_opp_id').value);
+    r.subject = document.getElementById('f_subject').value;
+    r.rfp_link = document.getElementById('f_rfp_link').value;
+    r.sales_name = document.getElementById('f_sales_name').value;
     r.submit_date = document.getElementById('f_submit_date').value;
-    r.init_date   = isNew ? document.getElementById('f_init_date').value : (prev.init_date || document.getElementById('f_init_date').value);
+    r.init_date = isNew ? document.getElementById('f_init_date').value : (prev.init_date || document.getElementById('f_init_date').value);
     r.clarif_date = document.getElementById('f_clarif_date').value;
-    r.dependency  = getDepCombined('f_dependency','f_dep_person');
+    r.dependency = getDepCombined('f_dependency','f_dep_person');
     r.ps_comments = document.getElementById('f_ps_comments')?.value || r.ps_comments || '';
-    // feedback only writable when status is Submitted
     const newSt = document.getElementById('f_status').value;
     const finalStatuses = ['Submitted','Won','Cancelled'];
     r.feedback = finalStatuses.includes(newSt) ? document.getElementById('f_feedback').value : (r.feedback||'');
   }
 
-  r.status     = document.getElementById('f_status').value;
-  r.tech_name  = document.getElementById('f_tech_name').value;
-  r.comments   = document.getElementById('f_comments').value;
-  // dependency editable by tech too
+  r.status = document.getElementById('f_status').value;
+  r.tech_name = document.getElementById('f_tech_name').value;
+  r.comments = document.getElementById('f_comments').value;
   const tdep = document.getElementById('f_tech_dependency');
-  if(tdep) r.dependency = tdep.value;
-  // final feedback only for final statuses
+  if(tdep && tdep.value) r.dependency = getDepCombined('f_tech_dependency','f_tech_dep_person');
   const finalStatuses2 = ['Submitted','Won','Cancelled'];
   const ftEl2 = document.getElementById('f_feedback_tech');
   if(ftEl2 && finalStatuses2.includes(r.status)) r.feedback = ftEl2.value;
 
-  // Determine _action from statusConfig for n8n routing
-  let _action;
-  if(isNew){ _action = 'add'; }
-  else { _action = getStatusAction(r.status) || 'update'; }
+  let _action; if(isNew){ _action = 'add'; } else { _action = getStatusAction(r.status) || 'update'; }
 
-  // Append history — use correct comment per role
   const now = new Date().toISOString().slice(0,16).replace('T',' ');
-  const actor   = loggedInUser || (currentRole==='presales' ? (r.sales_name||'Pre-Sales') : (r.tech_name||'Technical'));
-  const histComment = currentRole==='presales' ? (r.ps_comments||'') : (r.comments||'');
-  r.history.push({ role:currentRole, action:r.status, status:r.status, comment:histComment, dependency:r.dependency||'', date:now, actor });
+  let actor = '';
+  // تحديد اسم الشخص بدقة بناءً على الصفحة الحالية فقط (تجاهل loggedInUser)
+  if (currentRole === 'technical') {
+    actor = r.tech_name || document.getElementById('f_tech_name')?.value || 'Technical';
+  } else {
+    actor = r.sales_name || document.getElementById('f_sales_name')?.value || 'Pre-Sales';
+  }
 
-  // Update state
+  const histComment = currentRole==='presales' ? (r.ps_comments||'') : (r.comments||'');
+  r.history.push({ role:currentRole, action:r.status, status:r.status, comment:histComment, dependency:r.dependency||'', date:now, actor:actor });
+
   if(isNew) rows.push(r); else rows[editIdx]=r;
 
   closeModal('mainOverlay');
-  // Refresh from sheet after a short delay to get server-confirmed data
+  renderPresalesTable(); renderTechTable();
   setTimeout(loadFromSheet, 1500);
   if(document.getElementById('pane-analytics')?.classList.contains('active')) renderAnalytics();
 
-  // Fire single webhook
-  sendWebhook({ ...r, _action, _role:currentRole, _timestamp:new Date().toISOString(), history:undefined });
+  // إرسال البيانات مع توحيد اسم الـ actor في الحقل الأساسي ليتقبله n8n مباشرة
+  sendWebhook({ ...r, _action, _role:currentRole, actor: actor, _timestamp:new Date().toISOString(), history:undefined });
   showToast(_action==='add'?'Opportunity added — n8n notified tech team':'Updated — n8n workflow triggered');
 }
 
-function sendWebhook(payload){
-  fetch(N8N_WEBHOOK,{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(payload)
-  }).catch(()=>console.log('n8n not connected yet. Payload logged:', payload));
+function savePsUpdate(){
+  if(editIdx<0) return;
+  const r=rows[editIdx];
+  if(!r.opp_id){ const hid = document.getElementById('f_hidden_opp_id'); if(hid && hid.value) r.opp_id = hid.value; }
+  const newStatus=document.getElementById('ps_status').value;
+  r.status = newStatus;
+  r.ps_comments = document.getElementById('ps_comments').value;
+  r.dependency = getDepCombined('ps_dependency','ps_dep_person');
+  r.rfp_link = document.getElementById('ps_rfp_link').value || r.rfp_link;
+  r.sales_name = document.getElementById('ps_sales_name').value || r.sales_name;
+  r.tech_name = r.tech_name; 
+  r.submit_date = document.getElementById('ps_submit_date').value || r.submit_date;
+  r.clarif_date = document.getElementById('ps_clarif_date').value || r.clarif_date;
+  
+  const now=new Date().toISOString().slice(0,16).replace('T',' ');
+  const actor = r.sales_name || document.getElementById('ps_sales_name').value || 'Pre-Sales';
+  if(!r.history) r.history=[];
+  r.history.push({role:'presales',action:newStatus,status:newStatus,comment:r.ps_comments,dependency:r.dependency||'',date:now,actor:actor});
+  
+  closeModal('psUpdateOverlay');
+  renderPresalesTable(); renderTechTable();
+  setTimeout(loadFromSheet, 1500);
+  const _action=getStatusAction(newStatus)||'update';
+  
+  sendWebhook({...r,_action,_role:'presales',actor:actor,_timestamp:new Date().toISOString(),history:undefined});
+  showToast('Updated — workflow triggered');
 }
 
-// ─── HISTORY MODAL ─────────────────────────────────────────
+function sendWebhook(payload){ fetch(N8N_WEBHOOK,{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) }).catch(()=>console.log('n8n not connected yet. Payload logged:', payload)); }
+
 function renderHistoryItems(hist){
-  return hist.length
-    ? hist.map((h,idx)=>`
-        <div class="hist-item">
-          <div class="hist-timeline">
-            <div class="hist-dot ${h.role}"></div>
-            ${idx<hist.length-1?'<div class="hist-line"></div>':''}
-          </div>
-          <div class="hist-body">
-            <div class="hist-meta">
-              <span class="hist-role-tag ${h.role}">${h.role==='presales'?'Pre-Sales':'Technical'}</span>
-              <span style="font-weight:500;color:var(--text)">${h.actor}</span>
-              <span style="margin-left:auto;font-family:var(--mono);font-size:11px">${h.date}</span>
-            </div>
-            <div style="margin-top:5px">${badge(h.status)}</div>
-            ${h.comment ? `
-            <div style="margin-top:8px;padding:8px 10px;background:var(--bg3);border-radius:6px;border-left:2px solid ${h.role==='presales'?'var(--accent)':'var(--green)'};font-size:12px;color:var(--text2);line-height:1.5">
-              ${h.comment}
-            </div>` : ''}
-            ${h.dependency ? `
-            <div style="margin-top:6px;display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
-              Dependency: <span style="color:var(--amber);font-weight:500">${h.dependency}</span>
-            </div>` : ''}
-          </div>
-        </div>`).join('')
-    : '<p style="color:var(--text3);font-size:13px;padding:1rem 0">No history yet.</p>';
+  return hist.length ? hist.map((h,idx)=>`
+    <div class="hist-item">
+      <div class="hist-timeline"><div class="hist-dot ${h.role}"></div>${idx<hist.length-1?'<div class="hist-line"></div>':''}</div>
+      <div class="hist-body">
+        <div class="hist-meta"><span class="hist-role-tag ${h.role}">${h.role==='presales'?'Pre-Sales':'Technical'}</span><span style="font-weight:500;color:var(--text)">${h.actor}</span><span style="margin-left:auto;font-family:var(--mono);font-size:11px">${h.date}</span></div>
+        <div style="margin-top:5px">${badge(h.status)}</div>
+        ${h.comment ? `<div style="margin-top:8px;padding:8px 10px;background:var(--bg3);border-radius:6px;border-left:2px solid ${h.role==='presales'?'var(--accent)':'var(--green)'};font-size:12px;color:var(--text2);line-height:1.5">${h.comment}</div>` : ''}
+        ${h.dependency ? `<div style="margin-top:6px;display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Dependency: <span style="color:var(--amber);font-weight:500">${h.dependency}</span></div>` : ''}
+      </div>
+    </div>`).join('') : '<p style="color:var(--text3);font-size:13px;padding:1rem 0">No history yet.</p>';
 }
 
 async function showHistory(i){
-  const r = rows[i];
-  const opp_id = r.opp_id;
+  const r = rows[i]; const opp_id = r.opp_id;
   document.getElementById('histTitle').textContent = 'History — ' + r.opp_name;
   document.getElementById('histOverlay').classList.add('open');
-
-  // Show loading spinner immediately
-  document.getElementById('histBody').innerHTML = `
-    <div style="text-align:center;padding:2rem;color:var(--text2);font-size:13px">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        style="width:16px;height:16px;vertical-align:-3px;margin-right:6px;animation:spin 1s linear infinite">
-        <path d="M21 12a9 9 0 11-6.219-8.56"/>
-      </svg>
-      Loading history...
-    </div>`;
-
+  document.getElementById('histBody').innerHTML = `<div style="text-align:center;padding:2rem;color:var(--text2);font-size:13px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;vertical-align:-3px;margin-right:6px;animation:spin 1s linear infinite"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg>Loading history...</div>`;
   try {
     const res = await fetch(N8N_WEBHOOK_HISTORY + '?opp_id=' + encodeURIComponent(opp_id||''), { method:'GET' });
     if(!res.ok) throw new Error('HTTP ' + res.status);
-    const raw = await res.json();
-    const allHist = Array.isArray(raw) ? raw : [];
-
-    // DEBUG
-    console.log('History rows total:', allHist.length);
-    console.log('Searching opp_id:', JSON.stringify(opp_id), '| type:', typeof opp_id);
-    if(allHist[0]) console.log('Sample row:', JSON.stringify(allHist[0]));
-
-    // Filter — try exact match first, then fallback to includes
-    const hist = allHist
-      .filter(h => {
-        const hid = String(h.opp_id||'').trim();
-        const rid = String(opp_id||'').trim();
-        return hid === rid || hid.includes(rid) || rid.includes(hid);
-      })
-      .map(h => ({
-        role:       h.role       || 'presales',
-        action:     h.action     || '',
-        status:     h.action     || '',
-        comment:    h.comment    || '',
-        date:       h.date       || '',
-        actor:      h.actor      || '',
-        dependency: h.dependency || '',
-      }))
-      .sort((a,b) => a.date.localeCompare(b.date));
-
-    console.log('Matched history rows:', hist.length);
-
+    const raw = await res.json(); const allHist = Array.isArray(raw) ? raw : [];
+    const hist = allHist.filter(h => { const hid = String(h.opp_id||'').trim(); const rid = String(opp_id||'').trim(); return hid === rid || hid.includes(rid) || rid.includes(hid); }).map(h => ({ role: h.role || 'presales', action: h.action || '', status: h.action || '', comment: h.comment || '', date: h.date || '', actor: h.actor || '', dependency: h.dependency || '' })).sort((a,b) => a.date.localeCompare(b.date));
     document.getElementById('histBody').innerHTML = renderHistoryItems(hist);
-  } catch(e) {
-    document.getElementById('histBody').innerHTML =
-      `<p style="color:var(--red);font-size:13px;padding:1rem 0">
-        ⚠️ Could not load history — ${e.message}
-      </p>`;
-  }
+  } catch(e) { document.getElementById('histBody').innerHTML = `<p style="color:var(--red);font-size:13px;padding:1rem 0">⚠️ Could not load history — ${e.message}</p>`; }
 }
 
-// ─── ANALYTICS — LIVE FROM SHEET ──────────────────────────
-async function fetchSheetData(){
-  try {
-    const res = await fetch(N8N_WEBHOOK_DATA, { method:'GET' });
-    if(!res.ok) throw new Error('n8n not connected');
-    const data = await res.json();
-    // n8n Google Sheets returns array of objects
-    return Array.isArray(data) ? data : (data.rows || data.data || []);
-  } catch(e) {
-    console.warn('Using local data — n8n not connected:', e.message);
-    return null; // fallback to local rows
-  }
-}
+async function fetchSheetData(){ try { const res = await fetch(N8N_WEBHOOK_DATA, { method:'GET' }); if(!res.ok) throw new Error('n8n not connected'); const data = await res.json(); return Array.isArray(data) ? data : (data.rows || data.data || []); } catch(e) { return null; } }
 
 function renderAnalyticsData(data){
-  const total=data.length;
-  const byStatus={};
-  data.forEach(r=>{ byStatus[r.status]=(byStatus[r.status]||0)+1; });
-
-  // count pending dynamically — any status not in final states
+  const total=data.length; const byStatus={}; data.forEach(r=>{ byStatus[r.status]=(byStatus[r.status]||0)+1; });
   const finalStates = ['Submitted','Won','Cancelled'];
   const pending = data.filter(r=>r.status && !finalStates.includes(r.status) && r.status!=='New').length;
-  const submitted=byStatus['Submitted']||0;
-  const won=byStatus['Won']||0;
-  const newCount=byStatus['New']||0;
-
-  // Stats
-  document.getElementById('statGrid').innerHTML=`
-    <div class="stat-card hl"><div class="stat-lbl">Total</div><div class="stat-num" style="color:var(--accent)">${total}</div><div class="stat-sub">opportunities</div></div>
-    <div class="stat-card"><div class="stat-lbl">New</div><div class="stat-num" style="color:var(--blue)">${newCount}</div><div class="stat-sub">awaiting review</div></div>
-    <div class="stat-card"><div class="stat-lbl">In Progress</div><div class="stat-num" style="color:var(--amber)">${pending}</div><div class="stat-sub">needs action</div></div>
-    <div class="stat-card"><div class="stat-lbl">Submitted</div><div class="stat-num" style="color:var(--green)">${submitted}</div><div class="stat-sub">awaiting client</div></div>
-    <div class="stat-card"><div class="stat-lbl">Won</div><div class="stat-num" style="color:#10b981">${won}</div><div class="stat-sub">closed deals</div></div>
-  `;
-
-  // Status breakdown
-  const allS = statusConfig.map(s=>s.label);
-  const activeStatuses = [...new Set([...allS, ...Object.keys(byStatus)])];
-  const maxS=Math.max(...activeStatuses.map(s=>byStatus[s]||0),1);
-  document.getElementById('cStatus').innerHTML = activeStatuses.filter(s=>(byStatus[s]||0)>0).map(s=>`
-    <div class="bar-row">
-      <span class="bar-lbl">${s}</span>
-      <div class="bar-track"><div class="bar-fill" style="width:${Math.round((byStatus[s]||0)/maxS*100)}%;background:${getStatusColor(s)}"></div></div>
-      <span class="bar-val">${byStatus[s]||0}</span>
-    </div>`).join('');
-
-  // Deadlines timeline
+  const submitted=byStatus['Submitted']||0; const won=byStatus['Won']||0; const newCount=byStatus['New']||0;
+  document.getElementById('statGrid').innerHTML=`<div class="stat-card hl"><div class="stat-lbl">Total</div><div class="stat-num" style="color:var(--accent)">${total}</div><div class="stat-sub">opportunities</div></div><div class="stat-card"><div class="stat-lbl">New</div><div class="stat-num" style="color:var(--blue)">${newCount}</div><div class="stat-sub">awaiting review</div></div><div class="stat-card"><div class="stat-lbl">In Progress</div><div class="stat-num" style="color:var(--amber)">${pending}</div><div class="stat-sub">needs action</div></div><div class="stat-card"><div class="stat-lbl">Submitted</div><div class="stat-num" style="color:var(--green)">${submitted}</div><div class="stat-sub">awaiting client</div></div><div class="stat-card"><div class="stat-lbl">Won</div><div class="stat-num" style="color:#10b981">${won}</div><div class="stat-sub">closed deals</div></div>`;
+  const allS = statusConfig.map(s=>s.label); const activeStatuses = [...new Set([...allS, ...Object.keys(byStatus)])]; const maxS=Math.max(...activeStatuses.map(s=>byStatus[s]||0),1);
+  document.getElementById('cStatus').innerHTML = activeStatuses.filter(s=>(byStatus[s]||0)>0).map(s=>`<div class="bar-row"><span class="bar-lbl">${s}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.round((byStatus[s]||0)/maxS*100)}%;background:${getStatusColor(s)}"></div></div><span class="bar-val">${byStatus[s]||0}</span></div>`).join('');
   const sorted=[...data].filter(r=>r.submit_date).sort((a,b)=>a.submit_date.localeCompare(b.submit_date));
-  document.getElementById('cDeadline').innerHTML = sorted.length
-    ? sorted.map(r=>`<div class="tl-row">
-        <div class="tl-dot" style="background:${getStatusColor(r.status)}"></div>
-        <span class="tl-name">${r.opp_name||'—'}</span>
-        <span class="tl-date">${r.submit_date}</span>
-        ${badge(r.status)}
-      </div>`).join('')
-    : '<p style="color:var(--text3);font-size:13px">No submission dates set</p>';
-
-  // By sales
-  const bySales={};
-  data.forEach(r=>{ const n=r.sales_name||'Unknown'; bySales[n]=(bySales[n]||0)+1; });
-  const salesArr=Object.entries(bySales).sort((a,b)=>b[1]-a[1]);
-  const maxSl=Math.max(...salesArr.map(e=>e[1]),1);
-  document.getElementById('cSales').innerHTML = salesArr.map(([n,c])=>`
-    <div class="bar-row">
-      <span class="bar-lbl">${n}</span>
-      <div class="bar-track"><div class="bar-fill" style="width:${Math.round(c/maxSl*100)}%;background:var(--accent)"></div></div>
-      <span class="bar-val">${c}</span>
-    </div>`).join('');
-
-  // By technical reviewer
-  const byTech={};
-  data.forEach(r=>{ if(r.tech_name){ const n=r.tech_name; byTech[n]=(byTech[n]||0)+1; } });
-  const techArr=Object.entries(byTech).sort((a,b)=>b[1]-a[1]);
-  const maxTech=Math.max(...techArr.map(e=>e[1]),1);
-  document.getElementById('cTech').innerHTML = techArr.length
-    ? techArr.map(([n,c])=>`
-      <div class="bar-row">
-        <span class="bar-lbl">${n}</span>
-        <div class="bar-track"><div class="bar-fill" style="width:${Math.round(c/maxTech*100)}%;background:var(--green)"></div></div>
-        <span class="bar-val">${c}</span>
-      </div>`).join('')
-    : '<p style="color:var(--text3);font-size:13px">No technical reviewers assigned yet</p>';
-}
-
-function showAnalyticsLoading(){
-  const loadHtml = `<div style="display:flex;align-items:center;gap:8px;color:var(--text2);font-size:13px;padding:2rem 0">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;animation:spin 1s linear infinite"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg>
-    Loading data from Google Sheets...
-  </div>`;
-  document.getElementById('statGrid').innerHTML = loadHtml;
-  ['cStatus','cDeadline','cSales','cTech'].forEach(id=>{
-    document.getElementById(id).innerHTML = '<div style="height:60px"></div>';
-  });
+  document.getElementById('cDeadline').innerHTML = sorted.length ? sorted.map(r=>`<div class="tl-row"><div class="tl-dot" style="background:${getStatusColor(r.status)}"></div><span class="tl-name">${r.opp_name||'—'}</span><span class="tl-date">${r.submit_date}</span>${badge(r.status)}</div>`).join('') : '<p style="color:var(--text3);font-size:13px">No submission dates set</p>';
+  const bySales={}; data.forEach(r=>{ const n=r.sales_name||'Unknown'; bySales[n]=(bySales[n]||0)+1; }); const salesArr=Object.entries(bySales).sort((a,b)=>b[1]-a[1]); const maxSl=Math.max(...salesArr.map(e=>e[1]),1);
+  document.getElementById('cSales').innerHTML = salesArr.map(([n,c])=>`<div class="bar-row"><span class="bar-lbl">${n}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.round(c/maxSl*100)}%;background:var(--accent)"></div></div><span class="bar-val">${c}</span></div>`).join('');
+  const byTech={}; data.forEach(r=>{ if(r.tech_name){ const n=r.tech_name; byTech[n]=(byTech[n]||0)+1; } }); const techArr=Object.entries(byTech).sort((a,b)=>b[1]-a[1]); const maxTech=Math.max(...techArr.map(e=>e[1]),1);
+  document.getElementById('cTech').innerHTML = techArr.length ? techArr.map(([n,c])=>`<div class="bar-row"><span class="bar-lbl">${n}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.round(c/maxTech*100)}%;background:var(--green)"></div></div><span class="bar-val">${c}</span></div>`).join('') : '<p style="color:var(--text3);font-size:13px">No technical reviewers assigned yet</p>';
 }
 
 async function renderAnalytics(){
-  // 1. Render immediately from local rows — no blank screen
-  document.getElementById('analyticsSource').textContent =
-    `Source: local data — ${rows.length} records — ${new Date().toLocaleTimeString()}`;
+  document.getElementById('analyticsSource').textContent = `Source: local data — ${rows.length} records — ${new Date().toLocaleTimeString()}`;
   renderAnalyticsData(rows);
-
-  // 2. Try to refresh from Google Sheet in background
   const sheetData = await fetchSheetData();
-  if(sheetData && sheetData.length > 0){
-    document.getElementById('analyticsSource').textContent =
-      `Source: Google Sheets — ${sheetData.length} records — ${new Date().toLocaleTimeString()}`;
-    renderAnalyticsData(sheetData);
-  }
+  if(sheetData && sheetData.length > 0){ document.getElementById('analyticsSource').textContent = `Source: Google Sheets — ${sheetData.length} records — ${new Date().toLocaleTimeString()}`; renderAnalyticsData(sheetData); }
 }
 
-// ─── TABS ──────────────────────────────────────────────────
 function switchTab(tab){
   document.querySelectorAll('.tab-btn[data-tab]').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
-  ['presales','technical','analytics'].forEach(p=>{
-    document.getElementById('pane-'+p).classList.toggle('active', p===tab);
-  });
-  // set role and refresh on every tab switch
+  ['presales','technical','analytics'].forEach(p=>{ document.getElementById('pane-'+p).classList.toggle('active', p===tab); });
   if(tab==='presales')  { currentRole='presales';  const e=document.getElementById('psFilterRow');  if(e) e.innerHTML=''; loadFromSheet(); }
   if(tab==='technical') { currentRole='technical'; const e=document.getElementById('techFilterRow'); if(e) e.innerHTML=''; loadFromSheet(); }
-  if(tab==='analytics') { renderAnalytics();                        }
+  if(tab==='analytics') { renderAnalytics(); }
 }
 
-// ─── TOAST ─────────────────────────────────────────────────
-function showToast(msg){
-  document.getElementById('toastMsg').textContent=msg;
-  const t=document.getElementById('toast');
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),3200);
-}
-
-// Click outside to close
+function showToast(msg){ document.getElementById('toastMsg').textContent=msg; const t=document.getElementById('toast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3200); }
 document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');}));
 
-// ── DEPENDENCY INDIVIDUAL ──────────────────────────────────
-const DEP_MEMBERS = {"Sales Team": ["Ahmed Kamel", "Sara Nasser", "Mona Hassan", "Rania Saleh"], "Pre-Sales Team": ["Ahmed Kamel", "Sara Nasser", "Mona Hassan", "Rania Saleh"], "Technical Team": ["Khaled Mostafa", "Omar Fathy", "Mohamed Ali", "Tarek Hassan"], "Management Team": ["Ahmed Bayoumi", "Khaled Mansour", "Sara Ibrahim"]};
-
-function updateDepIndividual(selectId, team){
-  const sel = document.getElementById(selectId);
-  if(!sel) return;
-  const members = DEP_MEMBERS[team] || [];
-  sel.innerHTML = '<option value="">— Select Person —</option>' +
-    members.map(m=>`<option value="${m}">${m}</option>`).join('');
-}
-
-function setDepFields(teamId, indivId, teamVal, indivVal){
-  const tsel = document.getElementById(teamId);
-  if(tsel) tsel.value = teamVal||'';
-  updateDepIndividual(indivId, teamVal);
-  const isel = document.getElementById(indivId);
-  if(isel) isel.value = indivVal||'';
-}
-
-// ── INIT ────────────────────────────────────────────────────
 currentRole = 'presales';
-// Restore logged-in user label on page load
-if(loggedInUser){
-  const lbl = document.getElementById('loggedInLabel');
-  if(lbl){ lbl.textContent = loggedInUser; lbl.style.color='var(--accent)'; }
-}
-rebuildStatusStyles();
-rebuildStatusDropdown();
+if(loggedInUser){ const lbl = document.getElementById('loggedInLabel'); if(lbl){ lbl.textContent = loggedInUser; lbl.style.color='var(--accent)'; } }
+rebuildStatusStyles(); rebuildStatusDropdown();
 
-// Load data from Google Sheet via n8n on startup
 async function loadFromSheet(){
-  const loadHtml = `<tr><td colspan="20" style="text-align:center;padding:2rem;color:var(--text2);font-size:13px">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;vertical-align:-3px;margin-right:6px;animation:spin 1s linear infinite"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg>
-    Loading from Google Sheets...
-  </td></tr>`;
-  const ps = document.getElementById('oppBodyPresales');
-  const tc = document.getElementById('oppBodyTech');
-  if(ps) ps.innerHTML = loadHtml;
-  if(tc) tc.innerHTML = loadHtml;
-
+  const loadHtml = `<tr><td colspan="20" style="text-align:center;padding:2rem;color:var(--text2);font-size:13px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;vertical-align:-3px;margin-right:6px;animation:spin 1s linear infinite"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg>Loading from Google Sheets...</td></tr>`;
+  const ps = document.getElementById('oppBodyPresales'); const tc = document.getElementById('oppBodyTech'); if(ps) ps.innerHTML = loadHtml; if(tc) tc.innerHTML = loadHtml;
   try {
-    // Fetch opportunities + history in parallel
-    const [oppRes, histRes] = await Promise.all([
-      fetch(N8N_WEBHOOK_DATA,    { method:'GET' }),
-      fetch(N8N_WEBHOOK_HISTORY, { method:'GET' })
-    ]);
-
+    const [oppRes, histRes] = await Promise.all([ fetch(N8N_WEBHOOK_DATA, { method:'GET' }), fetch(N8N_WEBHOOK_HISTORY, { method:'GET' }) ]);
     if(!oppRes.ok) throw new Error('Opportunities fetch failed: HTTP ' + oppRes.status);
-
-    const rawOpps = await oppRes.json();
-    const data = Array.isArray(rawOpps) ? rawOpps : (rawOpps.rows || rawOpps.data || []);
-
-    // Parse history rows
-    let historyRows = [];
-    if(histRes.ok){
-      const rawHist = await histRes.json();
-      historyRows = Array.isArray(rawHist) ? rawHist : [];
-    }
-
-    // Build history map: opp_id → array of history entries
+    const rawOpps = await oppRes.json(); const data = Array.isArray(rawOpps) ? rawOpps : (rawOpps.rows || rawOpps.data || []);
+    let historyRows = []; if(histRes.ok){ const rawHist = await histRes.json(); historyRows = Array.isArray(rawHist) ? rawHist : []; }
     const histMap = {};
-    historyRows.forEach(h => {
-      const id = h.opp_id || '';
-      if(!id) return;
-      if(!histMap[id]) histMap[id] = [];
-      histMap[id].push({
-        role:    h.role    || 'presales',
-        action:  h.action  || '',
-        status:  h.action  || '',
-        comment: h.comment || '',
-        date:    h.date    || '',
-        actor:   h.actor   || '',
-      });
-    });
-
-    // Map opportunities and attach history
+    historyRows.forEach(h => { const id = h.opp_id || ''; if(!id) return; if(!histMap[id]) histMap[id] = []; histMap[id].push({ role: h.role || 'presales', action: h.action || '', status: h.action || '', comment: h.comment || '', date: h.date || '', actor: h.actor || '' }); });
     rows = data.map(r => ({
-      opp_id:      String(r.opp_id ?? '').trim(),
-      opp_name:    r.opp_name    || '',
-      subject:     r.subject     || '',
-      rfp_link:    r.rfp_link    || '',
-      sales_name:  r.sales_name  || '',
-      submit_date: r.submit_date || '',
-      init_date:   r.init_date   || '',
-      clarif_date: r.clarif_date || '',
-      status:      r.status      || 'New',
-      tech_name:   r.tech_name   || '',
-      comments:    r.comments    || '',
-      ps_comments: r.ps_comments || '',
-      dependency:  r.dependency  || '',
-      feedback:    r.feedback    || '',
-      _action:     r._action     || '',
-      _role:       r._role       || '',
-      history:     histMap[r.opp_id || ''] || [],
+      opp_id: String(r.opp_id ?? '').trim(), opp_name: r.opp_name || '', subject: r.subject || '', rfp_link: r.rfp_link || '',
+      sales_name: (r.sales_name || '').replace(/<[^>]*>/g, '').trim(), submit_date: r.submit_date || '', init_date: r.init_date || '', clarif_date: r.clarif_date || '',
+      status: r.status || 'New', tech_name: (r.tech_name || '').replace(/<[^>]*>/g, '').trim(), comments: r.comments || '', ps_comments: r.ps_comments || '',
+      dependency: (r.dependency || '').replace(/<[^>]*>/g, '').trim(), feedback: r.feedback || '', _action: r._action || '', _role: r._role || '', history: histMap[r.opp_id || ''] || [],
     }));
-
-    renderPresalesTable();
-    renderTechTable();
+    renderPresalesTable(); renderTechTable();
     showToast(`✓ Loaded ${rows.length} opportunities + ${historyRows.length} history entries`);
   } catch(e) {
     console.warn('Could not load from sheet:', e.message);
-    const errHtml = `<tr><td colspan="20" style="text-align:center;padding:2rem;color:var(--red);font-size:13px">
-      ⚠️ Could not connect to Google Sheets — check n8n webhook URL
-    </td></tr>`;
-    if(ps) ps.innerHTML = errHtml;
-    if(tc) tc.innerHTML = errHtml;
+    const errHtml = `<tr><td colspan="20" style="text-align:center;padding:2rem;color:var(--red);font-size:13px">⚠️ Could not connect to Google Sheets — check n8n webhook URL</td></tr>`;
+    if(ps) ps.innerHTML = errHtml; if(tc) tc.innerHTML = errHtml;
     showToast('⚠️ Could not load from Google Sheets');
   }
 }
